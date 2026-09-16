@@ -3,7 +3,7 @@ require("dotenv").config();
 const express = require("express");
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const API_KEY = process.env.OPENROUTER_API_KEY;
 
 app.use(express.json());
