@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -800,7 +799,11 @@
         border-radius: 14px;
         font-size: 12px;
         line-height: 1.65;
-        white-space: pre-wrap;
+
+        /* PERBAIKAN TEKS DI HP */
+        white-space: normal;
+        word-wrap: break-word;
+        overflow-wrap: anywhere;
     }
 
     .message.ai {
@@ -969,576 +972,564 @@
                 </svg>
             </div>
 
-        <div class="brand-text">
-            <strong>NutriCheck</strong>
-            <span>KESEHATAN • NUTRISI • AI</span>
+            <div class="brand-text">
+                <strong>NutriCheck</strong>
+                <span>KESEHATAN • NUTRISI • AI</span>
+            </div>
+        </a>
+
+        <div class="nav-pill">
+            PAHAMI TUBUHMU
         </div>
-    </a>
-
-    <div class="nav-pill">
-        PAHAMI TUBUHMU
     </div>
-</div>
-
 </nav>
 
 <header class="hero">
     <div class="container hero-grid">
 
-    <div>
-        <div class="eyebrow">
-            <span class="eyebrow-dot"></span>
-            PERSONAL HEALTH TECHNOLOGY
+        <div>
+            <div class="eyebrow">
+                <span class="eyebrow-dot"></span>
+                PERSONAL HEALTH TECHNOLOGY
+            </div>
+
+            <h1>
+                Tubuhmu
+                <span>punya cerita.</span>
+            </h1>
+
+            <p>
+                NutriCheck membantu memberikan gambaran mengenai berat badan,
+                komposisi tubuh, aktivitas, kebutuhan harian, serta kebiasaan
+                yang dapat diperbaiki secara bertahap.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#data" class="btn-primary">
+                    🚀 Mulai Cek Kesehatan
+                </a>
+
+                <a href="#ai" class="btn-secondary">
+                    🤖 Tanya NutriCheck AI
+                </a>
+            </div>
+
+            <div class="hero-note">
+                📊 Data • 🍎 Nutrisi • 🏃 Aktivitas • 😴 Istirahat
+            </div>
         </div>
 
-        <h1>
-            Tubuhmu
-            <span>punya cerita.</span>
-        </h1>
+        <div class="hero-card">
+            <div class="hero-card-title">
+                📈 GAMBARAN KESEHATAN HARIAN
+            </div>
 
-        <p>
-            NutriCheck membantu memberikan gambaran mengenai berat badan,
-            komposisi tubuh, aktivitas, kebutuhan harian, serta kebiasaan
-            yang dapat diperbaiki secara bertahap.
-        </p>
+            <div class="hero-orb"></div>
 
-        <div class="hero-actions">
-            <a href="#data" class="btn-primary">
-                🚀 Mulai Cek Kesehatan
-            </a>
+            <div class="floating-card fc-one">
+                <strong>Body</strong>
+                <span>Health insight</span>
+            </div>
 
-            <a href="#ai" class="btn-secondary">
-                🤖 Tanya NutriCheck AI
-            </a>
+            <div class="floating-card fc-two">
+                <strong>AI</strong>
+                <span>Personal analysis</span>
+            </div>
+
+            <div class="floating-card fc-three">
+                <strong>Daily</strong>
+                <span>Healthy habits</span>
+            </div>
         </div>
 
-        <div class="hero-note">
-            📊 Data • 🍎 Nutrisi • 🏃 Aktivitas • 😴 Istirahat
-        </div>
     </div>
-
-    <div class="hero-card">
-        <div class="hero-card-title">
-            📈 GAMBARAN KESEHATAN HARIAN
-        </div>
-
-        <div class="hero-orb"></div>
-
-        <div class="floating-card fc-one">
-            <strong>Body</strong>
-            <span>Health insight</span>
-        </div>
-
-        <div class="floating-card fc-two">
-            <strong>AI</strong>
-            <span>Personal analysis</span>
-        </div>
-
-        <div class="floating-card fc-three">
-            <strong>Daily</strong>
-            <span>Healthy habits</span>
-        </div>
-    </div>
-
-</div>
-
 </header>
 
 <section id="data">
     <div class="container">
 
-    <div class="section-head">
-        <div class="section-tag">DATA PENGGUNA</div>
+        <div class="section-head">
+            <div class="section-tag">DATA PENGGUNA</div>
 
-        <h2>Mulai dari mengenal dirimu. 👋</h2>
+            <h2>Mulai dari mengenal dirimu. 👋</h2>
 
-        <p>
-            Masukkan data dasar untuk mendapatkan gambaran awal mengenai
-            tubuh, aktivitas, dan kebiasaan yang dapat diperhatikan.
-        </p>
-    </div>
-
-    <div class="glass-card form-card">
-
-        <div class="form-grid">
-
-            <div class="field">
-                <label for="age">🎂 Usia</label>
-                <input id="age" type="number" min="1" max="100"
-                    placeholder="Contoh: 17">
-            </div>
-
-            <div class="field">
-                <label for="gender">👤 Jenis Kelamin</label>
-                <select id="gender">
-                    <option value="">Pilih jenis kelamin</option>
-                    <option value="male">Laki-laki</option>
-                    <option value="female">Perempuan</option>
-                </select>
-            </div>
-
-            <div class="field">
-                <label for="height">📏 Tinggi Badan (cm)</label>
-                <input id="height" type="number" min="50" max="250"
-                    placeholder="Contoh: 175">
-            </div>
-
-            <div class="field">
-                <label for="weight">⚖️ Berat Badan (kg)</label>
-                <input id="weight" type="number" min="10" max="300"
-                    placeholder="Contoh: 70">
-            </div>
-
-            <div class="field">
-                <label for="activity">🏃 Aktivitas Harian</label>
-                <select id="activity">
-                    <option value="">Pilih tingkat aktivitas</option>
-                    <option value="sedentary">Jarang bergerak</option>
-                    <option value="light">Aktivitas ringan</option>
-                    <option value="moderate">Cukup aktif</option>
-                    <option value="active">Aktif</option>
-                    <option value="very_active">Sangat aktif</option>
-                </select>
-            </div>
-
+            <p>
+                Masukkan data dasar untuk mendapatkan gambaran awal mengenai
+                tubuh, aktivitas, dan kebiasaan yang dapat diperhatikan.
+            </p>
         </div>
 
-        <div class="form-footer">
+        <div class="glass-card form-card">
 
-            <div class="form-info">
-                ℹ️ Hasil merupakan perkiraan berdasarkan rumus umum.
-                Untuk usia di bawah 18 tahun, BMI dan body fat tidak
-                digunakan sebagai diagnosis dan sebaiknya dinilai bersama
-                pertumbuhan berdasarkan usia dan jenis kelamin.
+            <div class="form-grid">
+
+                <div class="field">
+                    <label for="age">🎂 Usia</label>
+                    <input id="age" type="number" min="1" max="100"
+                        placeholder="Contoh: 17">
+                </div>
+
+                <div class="field">
+                    <label for="gender">👤 Jenis Kelamin</label>
+                    <select id="gender">
+                        <option value="">Pilih jenis kelamin</option>
+                        <option value="male">Laki-laki</option>
+                        <option value="female">Perempuan</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="height">📏 Tinggi Badan (cm)</label>
+                    <input id="height" type="number" min="50" max="250"
+                        placeholder="Contoh: 175">
+                </div>
+
+                <div class="field">
+                    <label for="weight">⚖️ Berat Badan (kg)</label>
+                    <input id="weight" type="number" min="10" max="300"
+                        placeholder="Contoh: 70">
+                </div>
+
+                <div class="field">
+                    <label for="activity">🏃 Aktivitas Harian</label>
+                    <select id="activity">
+                        <option value="">Pilih tingkat aktivitas</option>
+                        <option value="sedentary">Jarang bergerak</option>
+                        <option value="light">Aktivitas ringan</option>
+                        <option value="moderate">Cukup aktif</option>
+                        <option value="active">Aktif</option>
+                        <option value="very_active">Sangat aktif</option>
+                    </select>
+                </div>
+
             </div>
 
-            <button class="btn-primary" onclick="calculateHealth()">
-                🔎 Tampilkan Hasil
-            </button>
+            <div class="form-footer">
 
+                <div class="form-info">
+                    ℹ️ Hasil merupakan perkiraan berdasarkan rumus umum.
+                    Untuk usia di bawah 18 tahun, BMI dan body fat tidak
+                    digunakan sebagai diagnosis dan sebaiknya dinilai bersama
+                    pertumbuhan berdasarkan usia dan jenis kelamin.
+                </div>
+
+                <button class="btn-primary" onclick="calculateHealth()">
+                    🔎 Tampilkan Hasil
+                </button>
+
+            </div>
         </div>
+
     </div>
-
-</div>
-
 </section>
 
 <section id="results">
     <div class="container">
 
-    <div class="section-head">
-        <div class="section-tag">HASIL PERHITUNGAN</div>
+        <div class="section-head">
+            <div class="section-tag">HASIL PERHITUNGAN</div>
 
-        <h2>Gambaran kesehatanmu. 📊</h2>
+            <h2>Gambaran kesehatanmu. 📊</h2>
 
-        <p>
-            Hasil ini merupakan titik awal untuk memahami tubuhmu,
-            bukan untuk menghakimi atau menentukan kondisi medis.
-        </p>
+            <p>
+                Hasil ini merupakan titik awal untuk memahami tubuhmu,
+                bukan untuk menghakimi atau menentukan kondisi medis.
+            </p>
+        </div>
+
+        <div class="stats-grid">
+
+            <div class="glass-card stat-card">
+                <div class="stat-icon">⚖️</div>
+
+                <h3>BMI</h3>
+
+                <div class="stat-value" id="bmiResult">—</div>
+
+                <div class="stat-desc" id="bmiText">
+                    Masukkan data untuk melihat hasil.
+                </div>
+
+                <div class="stat-glow"></div>
+            </div>
+
+            <div class="glass-card stat-card">
+                <div class="stat-icon">📊</div>
+
+                <h3>Body Fat</h3>
+
+                <div class="stat-value" id="bodyFatResult">—</div>
+
+                <div class="stat-desc" id="bodyFatText">
+                    Estimasi persentase lemak tubuh.
+                </div>
+
+                <div class="stat-glow"></div>
+            </div>
+
+            <div class="glass-card stat-card">
+                <div class="stat-icon">🔥</div>
+
+                <h3>Energi Harian</h3>
+
+                <div class="stat-value" id="calorieResult">—</div>
+
+                <div class="stat-desc">
+                    Perkiraan kebutuhan energi berdasarkan rumus umum.
+                </div>
+
+                <div class="stat-glow"></div>
+            </div>
+
+            <div class="glass-card stat-card">
+                <div class="stat-icon">💧</div>
+
+                <h3>Cairan</h3>
+
+                <div class="stat-value" id="waterResult">—</div>
+
+                <div class="stat-desc">
+                    Perkiraan kebutuhan cairan harian.
+                </div>
+
+                <div class="stat-glow"></div>
+            </div>
+
+        </div>
+
     </div>
-
-    <div class="stats-grid">
-
-        <div class="glass-card stat-card">
-            <div class="stat-icon">⚖️</div>
-
-            <h3>BMI</h3>
-
-            <div class="stat-value" id="bmiResult">—</div>
-
-            <div class="stat-desc" id="bmiText">
-                Masukkan data untuk melihat hasil.
-            </div>
-
-            <div class="stat-glow"></div>
-        </div>
-
-        <div class="glass-card stat-card">
-            <div class="stat-icon">📊</div>
-
-            <h3>Body Fat</h3>
-
-            <div class="stat-value" id="bodyFatResult">—</div>
-
-            <div class="stat-desc" id="bodyFatText">
-                Estimasi persentase lemak tubuh.
-            </div>
-
-            <div class="stat-glow"></div>
-        </div>
-
-        <div class="glass-card stat-card">
-            <div class="stat-icon">🔥</div>
-
-            <h3>Energi Harian</h3>
-
-            <div class="stat-value" id="calorieResult">—</div>
-
-            <div class="stat-desc">
-                Perkiraan kebutuhan energi berdasarkan rumus umum.
-            </div>
-
-            <div class="stat-glow"></div>
-        </div>
-
-        <div class="glass-card stat-card">
-            <div class="stat-icon">💧</div>
-
-            <h3>Cairan</h3>
-
-            <div class="stat-value" id="waterResult">—</div>
-
-            <div class="stat-desc">
-                Perkiraan kebutuhan cairan harian.
-            </div>
-
-            <div class="stat-glow"></div>
-        </div>
-
-    </div>
-
-</div>
-
 </section>
-
-<!-- PERSONAL ANALYSIS -->
 
 <section id="personalAnalysis">
     <div class="container">
 
-    <div class="section-head">
-        <div class="section-tag">ANALISIS PERSONAL</div>
+        <div class="section-head">
+            <div class="section-tag">ANALISIS PERSONAL</div>
 
-        <h2>Jadi, tubuhmu perlu apa? 💡</h2>
+            <h2>Jadi, tubuhmu perlu apa? 💡</h2>
 
-        <p>
-            NutriCheck mengubah data yang kamu masukkan menjadi penjelasan
-            sederhana mengenai hal yang perlu diperhatikan dan langkah
-            yang bisa dilakukan.
-        </p>
+            <p>
+                NutriCheck mengubah data yang kamu masukkan menjadi penjelasan
+                sederhana mengenai hal yang perlu diperhatikan dan langkah
+                yang bisa dilakukan.
+            </p>
+        </div>
+
+        <div class="analysis-grid">
+
+            <div class="glass-card analysis-card">
+
+                <div class="analysis-title">
+                    <div class="analysis-icon">⚖️</div>
+
+                    <div>
+                        <h3>Kondisi Berat Badan</h3>
+                        <span>Perbandingan BB dan TB</span>
+                    </div>
+                </div>
+
+                <div class="status-badge" id="weightStatus">
+                    Belum dianalisis
+                </div>
+
+                <p id="weightAnalysis" style="margin-top:13px;">
+                    Masukkan data terlebih dahulu.
+                </p>
+
+            </div>
+
+            <div class="glass-card analysis-card">
+
+                <div class="analysis-title">
+                    <div class="analysis-icon">🏃</div>
+
+                    <div>
+                        <h3>Aktivitas</h3>
+                        <span>Kebiasaan bergerak</span>
+                    </div>
+                </div>
+
+                <div class="status-badge" id="activityStatus">
+                    Belum dianalisis
+                </div>
+
+                <p id="activityAnalysis" style="margin-top:13px;">
+                    Masukkan data terlebih dahulu.
+                </p>
+
+            </div>
+
+            <div class="glass-card analysis-card">
+
+                <div class="analysis-title">
+                    <div class="analysis-icon">🍽️</div>
+
+                    <div>
+                        <h3>Asupan & Nutrisi</h3>
+                        <span>Hal yang perlu diperhatikan</span>
+                    </div>
+                </div>
+
+                <p id="nutritionAnalysis">
+                    Masukkan data untuk mendapatkan saran nutrisi.
+                </p>
+
+                <ul class="analysis-list" id="nutritionList"></ul>
+
+            </div>
+
+            <div class="glass-card analysis-card">
+
+                <div class="analysis-title">
+                    <div class="analysis-icon">💪</div>
+
+                    <div>
+                        <h3>Olahraga yang Sesuai</h3>
+                        <span>Rekomendasi berdasarkan aktivitas</span>
+                    </div>
+                </div>
+
+                <p id="exerciseAnalysis">
+                    Masukkan data untuk mendapatkan rekomendasi olahraga.
+                </p>
+
+                <ul class="analysis-list" id="exerciseList"></ul>
+
+            </div>
+
+            <div class="glass-card analysis-card full">
+
+                <div class="analysis-title">
+                    <div class="analysis-icon">🎯</div>
+
+                    <div>
+                        <h3>Yang Sebaiknya Dilakukan</h3>
+                        <span>Langkah sederhana berdasarkan data kamu</span>
+                    </div>
+                </div>
+
+                <p id="actionAnalysis">
+                    Setelah data dianalisis, NutriCheck akan memberikan
+                    langkah yang lebih sesuai dengan kondisi yang dimasukkan.
+                </p>
+
+                <ul class="analysis-list" id="actionList"></ul>
+
+                <div class="warning-box" id="healthNote">
+                    ℹ️ Hasil akan muncul setelah data lengkap dimasukkan.
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
-
-    <div class="analysis-grid">
-
-        <div class="glass-card analysis-card">
-
-            <div class="analysis-title">
-                <div class="analysis-icon">⚖️</div>
-
-                <div>
-                    <h3>Kondisi Berat Badan</h3>
-                    <span>Perbandingan BB dan TB</span>
-                </div>
-            </div>
-
-            <div class="status-badge" id="weightStatus">
-                Belum dianalisis
-            </div>
-
-            <p id="weightAnalysis" style="margin-top:13px;">
-                Masukkan data terlebih dahulu.
-            </p>
-
-        </div>
-
-        <div class="glass-card analysis-card">
-
-            <div class="analysis-title">
-                <div class="analysis-icon">🏃</div>
-
-                <div>
-                    <h3>Aktivitas</h3>
-                    <span>Kebiasaan bergerak</span>
-                </div>
-            </div>
-
-            <div class="status-badge" id="activityStatus">
-                Belum dianalisis
-            </div>
-
-            <p id="activityAnalysis" style="margin-top:13px;">
-                Masukkan data terlebih dahulu.
-            </p>
-
-        </div>
-
-        <div class="glass-card analysis-card">
-
-            <div class="analysis-title">
-                <div class="analysis-icon">🍽️</div>
-
-                <div>
-                    <h3>Asupan & Nutrisi</h3>
-                    <span>Hal yang perlu diperhatikan</span>
-                </div>
-            </div>
-
-            <p id="nutritionAnalysis">
-                Masukkan data untuk mendapatkan saran nutrisi.
-            </p>
-
-            <ul class="analysis-list" id="nutritionList"></ul>
-
-        </div>
-
-        <div class="glass-card analysis-card">
-
-            <div class="analysis-title">
-                <div class="analysis-icon">💪</div>
-
-                <div>
-                    <h3>Olahraga yang Sesuai</h3>
-                    <span>Rekomendasi berdasarkan aktivitas</span>
-                </div>
-            </div>
-
-            <p id="exerciseAnalysis">
-                Masukkan data untuk mendapatkan rekomendasi olahraga.
-            </p>
-
-            <ul class="analysis-list" id="exerciseList"></ul>
-
-        </div>
-
-        <div class="glass-card analysis-card full">
-
-            <div class="analysis-title">
-                <div class="analysis-icon">🎯</div>
-
-                <div>
-                    <h3>Yang Sebaiknya Dilakukan</h3>
-                    <span>Langkah sederhana berdasarkan data kamu</span>
-                </div>
-            </div>
-
-            <p id="actionAnalysis">
-                Setelah data dianalisis, NutriCheck akan memberikan
-                langkah yang lebih sesuai dengan kondisi yang dimasukkan.
-            </p>
-
-            <ul class="analysis-list" id="actionList"></ul>
-
-            <div class="warning-box" id="healthNote">
-                ℹ️ Hasil akan muncul setelah data lengkap dimasukkan.
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
 </section>
 
 <section>
     <div class="container">
 
-    <div class="section-head">
-        <div class="section-tag">INSIGHT</div>
+        <div class="section-head">
+            <div class="section-tag">INSIGHT</div>
 
-        <h2>Bukan cuma angka. 💡</h2>
+            <h2>Bukan cuma angka. 💡</h2>
 
-        <p>
-            Kesehatan tidak ditentukan oleh satu angka saja. Pola makan,
-            aktivitas, tidur, pertumbuhan, dan kebiasaan sehari-hari
-            juga perlu diperhatikan.
-        </p>
+            <p>
+                Kesehatan tidak ditentukan oleh satu angka saja. Pola makan,
+                aktivitas, tidur, pertumbuhan, dan kebiasaan sehari-hari
+                juga perlu diperhatikan.
+            </p>
+        </div>
+
+        <div class="insight-grid">
+
+            <div class="glass-card insight-card">
+                <div class="icon-row">
+                    <div class="icon-box">📈</div>
+                    <span class="number">01</span>
+                </div>
+
+                <h3>📊 Pahami datanya</h3>
+
+                <p>
+                    BMI dan body fat hanyalah alat bantu untuk mendapatkan
+                    gambaran awal, bukan penentu nilai kesehatan seseorang.
+                </p>
+            </div>
+
+            <div class="glass-card insight-card">
+                <div class="icon-row">
+                    <div class="icon-box">🌱</div>
+                    <span class="number">02</span>
+                </div>
+
+                <h3>🌱 Mulai perlahan</h3>
+
+                <p>
+                    Perubahan kebiasaan dapat dilakukan sedikit demi sedikit
+                    melalui makan teratur, aktivitas, dan tidur yang cukup.
+                </p>
+            </div>
+
+            <div class="glass-card insight-card">
+                <div class="icon-row">
+                    <div class="icon-box">⚖️</div>
+                    <span class="number">03</span>
+                </div>
+
+                <h3>⚖️ Jaga keseimbangan</h3>
+
+                <p>
+                    Tujuan utama bukan mengejar angka tertentu, tetapi
+                    membangun kebiasaan sehat yang dapat dipertahankan.
+                </p>
+            </div>
+
+        </div>
     </div>
-
-    <div class="insight-grid">
-
-        <div class="glass-card insight-card">
-            <div class="icon-row">
-                <div class="icon-box">📈</div>
-                <span class="number">01</span>
-            </div>
-
-            <h3>📊 Pahami datanya</h3>
-
-            <p>
-                BMI dan body fat hanyalah alat bantu untuk mendapatkan
-                gambaran awal, bukan penentu nilai kesehatan seseorang.
-            </p>
-        </div>
-
-        <div class="glass-card insight-card">
-            <div class="icon-row">
-                <div class="icon-box">🌱</div>
-                <span class="number">02</span>
-            </div>
-
-            <h3>🌱 Mulai perlahan</h3>
-
-            <p>
-                Perubahan kebiasaan dapat dilakukan sedikit demi sedikit
-                melalui makan teratur, aktivitas, dan tidur yang cukup.
-            </p>
-        </div>
-
-        <div class="glass-card insight-card">
-            <div class="icon-row">
-                <div class="icon-box">⚖️</div>
-                <span class="number">03</span>
-            </div>
-
-            <h3>⚖️ Jaga keseimbangan</h3>
-
-            <p>
-                Tujuan utama bukan mengejar angka tertentu, tetapi
-                membangun kebiasaan sehat yang dapat dipertahankan.
-            </p>
-        </div>
-
-    </div>
-</div>
-
 </section>
 
 <section id="ai">
     <div class="container">
 
-    <div class="section-head">
-        <div class="section-tag">AI ASSISTANT</div>
+        <div class="section-head">
+            <div class="section-tag">AI ASSISTANT</div>
 
-        <h2>Ada yang ingin kamu tanyakan? 🤖</h2>
-
-        <p>
-            Tanyakan tentang nutrisi, aktivitas, tidur, olahraga,
-            atau hasil analisis yang muncul di halaman ini.
-        </p>
-    </div>
-
-    <div class="ai-layout">
-
-        <div class="glass-card ai-info">
-
-            <div class="ai-title">
-
-                <div class="ai-avatar">
-                    🤖
-                </div>
-
-                <div>
-                    <h3>NutriCheck AI</h3>
-                    <span>Teman digital untuk memahami kesehatan</span>
-                </div>
-
-            </div>
+            <h2>Ada yang ingin kamu tanyakan? 🤖</h2>
 
             <p>
-                Tulis pertanyaan menggunakan bahasa sehari-hari.
-                NutriCheck AI akan membantu memberikan penjelasan
-                yang sederhana dan mudah dipahami.
+                Tanyakan tentang nutrisi, aktivitas, tidur, olahraga,
+                atau hasil analisis yang muncul di halaman ini.
             </p>
+        </div>
 
-            <div class="quick-grid">
+        <div class="ai-layout">
 
-                <button class="quick-btn"
-                    onclick="askQuick('Apa makanan yang cocok setelah olahraga?')">
-                    <div class="quick-icon">🍎</div>
-                    <strong>Ide makanan</strong>
-                    <span>Pilihan makanan untuk sehari-hari.</span>
-                </button>
+            <div class="glass-card ai-info">
 
-                <button class="quick-btn"
-                    onclick="askQuick('Bagaimana cara menjaga pola makan yang seimbang?')">
-                    <div class="quick-icon">🥗</div>
-                    <strong>Pola makan</strong>
-                    <span>Memahami pola makan seimbang.</span>
-                </button>
+                <div class="ai-title">
 
-                <button class="quick-btn"
-                    onclick="askQuick('Apa manfaat tidur yang cukup bagi tubuh?')">
-                    <div class="quick-icon">😴</div>
-                    <strong>Tentang tidur</strong>
-                    <span>Peran istirahat bagi tubuh.</span>
-                </button>
+                    <div class="ai-avatar">
+                        🤖
+                    </div>
 
-                <button class="quick-btn"
-                    onclick="askQuick('Bagaimana cara mulai olahraga secara rutin?')">
-                    <div class="quick-icon">🏃</div>
-                    <strong>Mulai bergerak</strong>
-                    <span>Cara mulai aktivitas secara bertahap.</span>
-                </button>
+                    <div>
+                        <h3>NutriCheck AI</h3>
+                        <span>Teman digital untuk memahami kesehatan</span>
+                    </div>
+
+                </div>
+
+                <p>
+                    Tulis pertanyaan menggunakan bahasa sehari-hari.
+                    NutriCheck AI akan membantu memberikan penjelasan
+                    yang sederhana dan mudah dipahami.
+                </p>
+
+                <div class="quick-grid">
+
+                    <button class="quick-btn"
+                        onclick="askQuick('Apa makanan yang cocok setelah olahraga?')">
+                        <div class="quick-icon">🍎</div>
+                        <strong>Ide makanan</strong>
+                        <span>Pilihan makanan untuk sehari-hari.</span>
+                    </button>
+
+                    <button class="quick-btn"
+                        onclick="askQuick('Bagaimana cara menjaga pola makan yang seimbang?')">
+                        <div class="quick-icon">🥗</div>
+                        <strong>Pola makan</strong>
+                        <span>Memahami pola makan seimbang.</span>
+                    </button>
+
+                    <button class="quick-btn"
+                        onclick="askQuick('Apa manfaat tidur yang cukup bagi tubuh?')">
+                        <div class="quick-icon">😴</div>
+                        <strong>Tentang tidur</strong>
+                        <span>Peran istirahat bagi tubuh.</span>
+                    </button>
+
+                    <button class="quick-btn"
+                        onclick="askQuick('Bagaimana cara mulai olahraga secara rutin?')">
+                        <div class="quick-icon">🏃</div>
+                        <strong>Mulai bergerak</strong>
+                        <span>Cara mulai aktivitas secara bertahap.</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="glass-card chat-card">
+
+                <div class="chat-top">
+                    <div class="chat-label">
+                        💬 Percakapan dengan AI
+                    </div>
+
+                    <div class="online-dot">
+                        Siap membantu
+                    </div>
+                </div>
+
+                <div class="chat-box" id="chatBox">
+
+                    <div class="message ai">Halo! 👋 Saya NutriCheck AI.
+
+Saya bisa membantu menjelaskan nutrisi,
+aktivitas fisik, tidur, olahraga, dan hasil
+analisis kesehatanmu.
+
+Silakan ceritakan apa yang ingin kamu ketahui.</div>
+
+                </div>
+
+                <div class="typing" id="typingText"></div>
+
+                <div class="chat-form">
+
+                    <input
+                        id="chatInput"
+                        class="chat-input"
+                        type="text"
+                        placeholder="Tulis pertanyaanmu di sini..."
+                        autocomplete="off"
+                    >
+
+                    <button class="send-btn"
+                        onclick="sendMessage()"
+                        aria-label="Kirim pesan">
+                        ➤
+                    </button>
+
+                </div>
 
             </div>
 
         </div>
-
-        <div class="glass-card chat-card">
-
-            <div class="chat-top">
-                <div class="chat-label">
-                    💬 Percakapan dengan AI
-                </div>
-
-                <div class="online-dot">
-                    Siap membantu
-                </div>
-            </div>
-
-            <div class="chat-box" id="chatBox">
-
-                <div class="message ai">
-                    Halo! 👋 Saya NutriCheck AI.
-
-                    Saya bisa membantu menjelaskan nutrisi,
-                    aktivitas fisik, tidur, olahraga, dan hasil
-                    analisis kesehatanmu.
-
-                    Silakan ceritakan apa yang ingin kamu ketahui.
-                </div>
-
-            </div>
-
-            <div class="typing" id="typingText"></div>
-
-            <div class="chat-form">
-
-                <input
-                    id="chatInput"
-                    class="chat-input"
-                    type="text"
-                    placeholder="Tulis pertanyaanmu di sini..."
-                    autocomplete="off"
-                >
-
-                <button class="send-btn"
-                    onclick="sendMessage()"
-                    aria-label="Kirim pesan">
-                    ➤
-                </button>
-
-            </div>
-
-        </div>
-
     </div>
-</div>
-
 </section>
 
 <footer>
     <div class="container footer-inner">
 
-    <div>
-        <div class="footer-title">
-            NutriCheck 🔵
+        <div>
+            <div class="footer-title">
+                NutriCheck 🔵
+            </div>
+
+            <div class="footer-text">
+                Teman digital untuk membantu memahami kesehatan,
+                nutrisi, aktivitas, dan kebiasaan sehari-hari dengan
+                cara yang sederhana dan informatif.
+            </div>
         </div>
 
-        <div class="footer-text">
-            Teman digital untuk membantu memahami kesehatan,
-            nutrisi, aktivitas, dan kebiasaan sehari-hari dengan
-            cara yang sederhana dan informatif.
+        <div class="footer-small">
+            NutriCheck AI • Personal Health Experience
         </div>
+
     </div>
-
-    <div class="footer-small">
-        NutriCheck AI • Personal Health Experience
-    </div>
-
-</div>
-
 </footer>
 
 <script>
@@ -1568,11 +1559,6 @@ function calculateHealth() {
 
     const bmi = weight / (heightMeter * heightMeter);
 
-    /*
-       Rumus body fat Deurenberg.
-       Untuk usia <18 hasil hanya estimasi kasar.
-    */
-
     let bodyFat;
 
     if (gender === "male") {
@@ -1588,12 +1574,6 @@ function calculateHealth() {
     }
 
     bodyFat = Math.max(0, bodyFat);
-
-
-    /*
-       Kalori:
-       Hanya estimasi rumus umum.
-    */
 
     let bmr;
 
@@ -1623,26 +1603,7 @@ function calculateHealth() {
         bmr * activityMultiplier[activity]
     );
 
-
-    /*
-       Cairan sebagai perkiraan sederhana.
-    */
-
     const water = (weight * 35) / 1000;
-
-
-    const activityNames = {
-        sedentary: "Jarang bergerak",
-        light: "Aktivitas ringan",
-        moderate: "Cukup aktif",
-        active: "Aktif",
-        very_active: "Sangat aktif"
-    };
-
-
-    /*
-       Tampilkan angka.
-    */
 
     document.getElementById("bmiResult").textContent =
         bmi.toFixed(1);
@@ -1656,11 +1617,6 @@ function calculateHealth() {
     document.getElementById("waterResult").textContent =
         water.toFixed(1) + " L";
 
-
-    /*
-       Simpan data.
-    */
-
     healthData = {
         age,
         gender,
@@ -1673,11 +1629,6 @@ function calculateHealth() {
         water: Number(water.toFixed(1))
     };
 
-
-    /*
-       Analisis.
-    */
-
     generateAnalysis(
         age,
         gender,
@@ -1687,11 +1638,6 @@ function calculateHealth() {
         bmi,
         bodyFat
     );
-
-
-    /*
-       Scroll ke hasil.
-    */
 
     document.getElementById("results").scrollIntoView({
         behavior: "smooth"
@@ -1750,13 +1696,6 @@ function generateAnalysis(
     exerciseList.innerHTML = "";
     actionList.innerHTML = "";
 
-
-    /*
-       =========================
-       USIA DI BAWAH 18
-       =========================
-    */
-
     if (age < 18) {
 
         document.getElementById("bmiText").textContent =
@@ -1764,7 +1703,6 @@ function generateAnalysis(
 
         document.getElementById("bodyFatText").textContent =
             "Estimasi kasar dan bukan diagnosis.";
-
 
         weightStatus.textContent =
             "Perlu dilihat berdasarkan pertumbuhan";
@@ -1774,12 +1712,6 @@ function generateAnalysis(
 
         healthNote.textContent =
             "ℹ️ Kamu masih dalam masa pertumbuhan. Hasil BMI dan body fat di halaman ini hanya perkiraan. Jangan melakukan diet ketat atau menaikkan/menurunkan berat badan secara ekstrem berdasarkan hasil ini.";
-
-
-        /*
-           Analisis berdasarkan BMI hanya sebagai sinyal,
-           bukan kategori medis.
-        */
 
         if (bmi < 18.5) {
 
@@ -1842,11 +1774,6 @@ function generateAnalysis(
             );
         }
 
-
-        /*
-           Aktivitas.
-        */
-
         if (activity === "sedentary") {
 
             activityStatus.textContent =
@@ -1880,11 +1807,6 @@ function generateAnalysis(
                 "Aktivitasmu cukup tinggi. Pastikan makan, cairan, dan waktu istirahat tetap mencukupi.";
         }
 
-
-        /*
-           Olahraga.
-        */
-
         exerciseAnalysis.textContent =
             "Pilih aktivitas yang kamu sukai agar lebih mudah dilakukan secara konsisten.";
 
@@ -1907,11 +1829,6 @@ function generateAnalysis(
             exerciseList,
             "Mulai secara bertahap dan berikan waktu istirahat."
         );
-
-
-        /*
-           Yang harus dilakukan.
-        */
 
         actionAnalysis.textContent =
             "Fokus utama bukan mengejar angka berat badan tertentu, tetapi membangun kebiasaan sehat.";
@@ -1938,13 +1855,6 @@ function generateAnalysis(
 
         return;
     }
-
-
-    /*
-       =========================
-       USIA 18+
-       =========================
-    */
 
     let category;
 
@@ -2061,13 +1971,7 @@ function generateAnalysis(
         );
     }
 
-
     weightStatus.textContent = category;
-
-
-    /*
-       Aktivitas.
-    */
 
     if (activity === "sedentary") {
 
@@ -2109,11 +2013,6 @@ function generateAnalysis(
         activityAnalysis.textContent =
             "Aktivitasmu sangat tinggi. Perhatikan pemulihan, cairan, dan kecukupan makanan.";
     }
-
-
-    /*
-       Olahraga.
-    */
 
     exerciseAnalysis.textContent =
         "Pilih olahraga sesuai kemampuan dan tingkat aktivitasmu.";
@@ -2169,11 +2068,6 @@ function generateAnalysis(
             "Sesuaikan intensitas dengan kemampuan dan kondisi tubuh."
         );
     }
-
-
-    /*
-       Yang dilakukan.
-    */
 
     actionAnalysis.textContent =
         "Berdasarkan data yang kamu masukkan, fokus terbaik adalah memperbaiki kebiasaan secara bertahap.";
@@ -2293,10 +2187,8 @@ async function sendMessage() {
                 })
             });
 
-
         const data =
             await response.json();
-
 
         if (!response.ok) {
 
@@ -2305,26 +2197,21 @@ async function sendMessage() {
             );
         }
 
-
         let reply =
             data.reply ||
             "Maaf, belum ada jawaban.";
-
 
         reply = reply
             .replace(/\*\*/g, "")
             .replace(/\*/g, "")
             .trim();
 
-
         addMessage(reply, "ai");
-
 
         chatHistory.push({
             role: "assistant",
             content: reply
         });
-
 
     } catch (error) {
 
@@ -2335,7 +2222,6 @@ async function sendMessage() {
 
         console.error(error);
     }
-
 
     typingText.textContent = "";
 }
