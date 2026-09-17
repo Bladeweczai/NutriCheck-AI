@@ -91,18 +91,18 @@
     }
 
     @keyframes floatOne {
-        0%,100% { transform: translate(0,0); }
-        50% { transform: translate(45px,35px); }
+        0%, 100% { transform: translate(0, 0); }
+        50% { transform: translate(45px, 35px); }
     }
 
     @keyframes floatTwo {
-        0%,100% { transform: translate(0,0); }
-        50% { transform: translate(-40px,-30px); }
+        0%, 100% { transform: translate(0, 0); }
+        50% { transform: translate(-40px, -30px); }
     }
 
     @keyframes floatThree {
-        0%,100% { transform: translate(0,0); }
-        50% { transform: translate(25px,-35px); }
+        0%, 100% { transform: translate(0, 0); }
+        50% { transform: translate(25px, -35px); }
     }
 
     .container {
@@ -317,11 +317,12 @@
     }
 
     @keyframes orbPulse {
-        0%,100% {
-            transform: translate(-50%,-50%) scale(1);
+        0%, 100% {
+            transform: translate(-50%, -50%) scale(1);
         }
+
         50% {
-            transform: translate(-50%,-50%) scale(1.05);
+            transform: translate(-50%, -50%) scale(1.05);
         }
     }
 
@@ -518,9 +519,9 @@
         position: absolute;
         width: 90px;
         height: 90px;
-        border-radius: 50%;
         right: -38px;
         bottom: -44px;
+        border-radius: 50%;
         background: rgba(22,119,255,0.09);
     }
 
@@ -710,8 +711,8 @@
     }
 
     .quick-btn {
-        text-align: left;
         padding: 14px;
+        text-align: left;
         color: #253142;
         background: #fff;
         border: 1px solid var(--line);
@@ -726,8 +727,8 @@
     }
 
     .quick-icon {
-        font-size: 20px;
         margin-bottom: 8px;
+        font-size: 20px;
     }
 
     .quick-btn strong {
@@ -798,11 +799,7 @@
         border-radius: 14px;
         font-size: 12px;
         line-height: 1.65;
-
-        /* Tetap mempertahankan enter dan paragraf */
         white-space: pre-wrap;
-
-        /* Teks panjang tidak keluar dari bubble */
         word-break: break-word;
         overflow-wrap: anywhere;
     }
@@ -983,11 +980,13 @@
         }
     }
 </style>
+```
 
 </head>
 
 <body>
 
+```
 <div class="shape shape-one"></div>
 <div class="shape shape-two"></div>
 <div class="shape shape-three"></div>
@@ -1058,18 +1057,18 @@
             <div class="hero-orb"></div>
 
             <div class="floating-card fc-one">
-                <strong>Body</strong>
-                <span>Health insight</span>
+                <strong id="sleepHero">7–9 jam</strong>
+                <span>Tidur yang disarankan</span>
             </div>
 
             <div class="floating-card fc-two">
-                <strong>AI</strong>
-                <span>Personal analysis</span>
+                <strong id="waterHero">—</strong>
+                <span>Perkiraan cairan</span>
             </div>
 
             <div class="floating-card fc-three">
-                <strong>Daily</strong>
-                <span>Healthy habits</span>
+                <strong id="calorieHero">—</strong>
+                <span>Perkiraan energi harian</span>
             </div>
         </div>
 
@@ -1233,7 +1232,6 @@
         <div class="analysis-grid">
 
             <div class="glass-card analysis-card">
-
                 <div class="analysis-title">
                     <div class="analysis-icon">⚖️</div>
 
@@ -1250,11 +1248,9 @@
                 <p id="weightAnalysis" style="margin-top:13px;">
                     Masukkan data terlebih dahulu.
                 </p>
-
             </div>
 
             <div class="glass-card analysis-card">
-
                 <div class="analysis-title">
                     <div class="analysis-icon">🏃</div>
 
@@ -1271,11 +1267,9 @@
                 <p id="activityAnalysis" style="margin-top:13px;">
                     Masukkan data terlebih dahulu.
                 </p>
-
             </div>
 
             <div class="glass-card analysis-card">
-
                 <div class="analysis-title">
                     <div class="analysis-icon">🍽️</div>
 
@@ -1290,11 +1284,9 @@
                 </p>
 
                 <ul class="analysis-list" id="nutritionList"></ul>
-
             </div>
 
             <div class="glass-card analysis-card">
-
                 <div class="analysis-title">
                     <div class="analysis-icon">💪</div>
 
@@ -1309,11 +1301,9 @@
                 </p>
 
                 <ul class="analysis-list" id="exerciseList"></ul>
-
             </div>
 
             <div class="glass-card analysis-card full">
-
                 <div class="analysis-title">
                     <div class="analysis-icon">🎯</div>
 
@@ -1333,7 +1323,6 @@
                 <div class="warning-box" id="healthNote">
                     ℹ️ Hasil akan muncul setelah data lengkap dimasukkan.
                 </div>
-
             </div>
 
         </div>
@@ -1401,6 +1390,7 @@
             </div>
 
         </div>
+
     </div>
 </section>
 
@@ -1423,16 +1413,12 @@
             <div class="glass-card ai-info">
 
                 <div class="ai-title">
-
-                    <div class="ai-avatar">
-                        🤖
-                    </div>
+                    <div class="ai-avatar">🤖</div>
 
                     <div>
                         <h3>NutriCheck AI</h3>
                         <span>Teman digital untuk memahami kesehatan</span>
                     </div>
-
                 </div>
 
                 <p>
@@ -1443,28 +1429,32 @@
 
                 <div class="quick-grid">
 
-                    <button class="quick-btn"
+                    <button
+                        class="quick-btn"
                         onclick="askQuick('Apa makanan yang cocok setelah olahraga?')">
                         <div class="quick-icon">🍎</div>
                         <strong>Ide makanan</strong>
                         <span>Pilihan makanan untuk sehari-hari.</span>
                     </button>
 
-                    <button class="quick-btn"
+                    <button
+                        class="quick-btn"
                         onclick="askQuick('Bagaimana cara menjaga pola makan yang seimbang?')">
                         <div class="quick-icon">🥗</div>
                         <strong>Pola makan</strong>
                         <span>Memahami pola makan seimbang.</span>
                     </button>
 
-                    <button class="quick-btn"
+                    <button
+                        class="quick-btn"
                         onclick="askQuick('Apa manfaat tidur yang cukup bagi tubuh?')">
                         <div class="quick-icon">😴</div>
                         <strong>Tentang tidur</strong>
                         <span>Peran istirahat bagi tubuh.</span>
                     </button>
 
-                    <button class="quick-btn"
+                    <button
+                        class="quick-btn"
                         onclick="askQuick('Bagaimana cara mulai olahraga secara rutin?')">
                         <div class="quick-icon">🏃</div>
                         <strong>Mulai bergerak</strong>
@@ -1508,8 +1498,7 @@ Silakan ceritakan apa yang ingin kamu ketahui.</div>
                         class="chat-input"
                         type="text"
                         placeholder="Tulis pertanyaanmu di sini..."
-                        autocomplete="off"
-                    >
+                        autocomplete="off">
 
                     <button
                         class="send-btn"
@@ -1523,6 +1512,7 @@ Silakan ceritakan apa yang ingin kamu ketahui.</div>
             </div>
 
         </div>
+
     </div>
 </section>
 
@@ -1549,102 +1539,106 @@ Silakan ceritakan apa yang ingin kamu ketahui.</div>
 </footer>
 
 <script>
+    let healthData = {};
+    let chatHistory = [];
 
-let healthData = {};
-let chatHistory = [];
+    function calculateHealth() {
+        const age = Number(document.getElementById("age").value);
+        const gender = document.getElementById("gender").value;
+        const height = Number(document.getElementById("height").value);
+        const weight = Number(document.getElementById("weight").value);
+        const activity = document.getElementById("activity").value;
 
+        if (!age || !gender || !height || !weight || !activity) {
+            alert("⚠️ Lengkapi semua data terlebih dahulu.");
+            return;
+        }
 
-/* =========================
-   HITUNG KESEHATAN
-========================= */
+        const heightMeter = height / 100;
+        const bmi = weight / (heightMeter * heightMeter);
 
-function calculateHealth() {
+        let bodyFat;
 
-    const age = Number(document.getElementById("age").value);
-    const gender = document.getElementById("gender").value;
-    const height = Number(document.getElementById("height").value);
-    const weight = Number(document.getElementById("weight").value);
-    const activity = document.getElementById("activity").value;
+        if (gender === "male") {
+            bodyFat = (1.20 * bmi) + (0.23 * age) - 16.2;
+        } else {
+            bodyFat = (1.20 * bmi) + (0.23 * age) - 5.4;
+        }
 
-    if (!age || !gender || !height || !weight || !activity) {
-        alert("⚠️ Lengkapi semua data terlebih dahulu.");
-        return;
+        bodyFat = Math.max(0, bodyFat);
+
+        let bmr;
+
+        if (gender === "male") {
+            bmr = (10 * weight) + (6.25 * height) - (5 * age) + 5;
+        } else {
+            bmr = (10 * weight) + (6.25 * height) - (5 * age) - 161;
+        }
+
+        const activityMultiplier = {
+            sedentary: 1.2,
+            light: 1.375,
+            moderate: 1.55,
+            active: 1.725,
+            very_active: 1.9
+        };
+
+        const calorie = Math.round(
+            bmr * activityMultiplier[activity]
+        );
+
+        const water = (weight * 35) / 1000;
+
+        document.getElementById("bmiResult").textContent =
+            bmi.toFixed(1);
+
+        document.getElementById("bodyFatResult").textContent =
+            bodyFat.toFixed(1) + "%";
+
+        document.getElementById("calorieResult").textContent =
+            calorie + " kcal";
+
+        document.getElementById("waterResult").textContent =
+            water.toFixed(1) + " L";
+
+        document.getElementById("sleepHero").textContent =
+            "7–9 jam";
+
+        document.getElementById("waterHero").textContent =
+            water.toFixed(1) + " L";
+
+        document.getElementById("calorieHero").textContent =
+            calorie + " kcal";
+
+        healthData = {
+            age,
+            gender,
+            height,
+            weight,
+            activity,
+            bmi: Number(bmi.toFixed(1)),
+            bodyFat: Number(bodyFat.toFixed(1)),
+            calorie,
+            calories: calorie,
+            water: Number(water.toFixed(1))
+        };
+
+        generateAnalysis(
+            age,
+            gender,
+            height,
+            weight,
+            activity,
+            bmi,
+            bodyFat
+        );
+
+        document.getElementById("results").scrollIntoView({
+            behavior: "smooth"
+        });
     }
 
-    const heightMeter = height / 100;
-    const bmi = weight / (heightMeter * heightMeter);
-
-    let bodyFat;
-
-    if (gender === "male") {
-        bodyFat =
-            (1.20 * bmi) +
-            (0.23 * age) -
-            16.2;
-    } else {
-        bodyFat =
-            (1.20 * bmi) +
-            (0.23 * age) -
-            5.4;
-    }
-
-    bodyFat = Math.max(0, bodyFat);
-
-    let bmr;
-
-    if (gender === "male") {
-        bmr =
-            (10 * weight) +
-            (6.25 * height) -
-            (5 * age) +
-            5;
-    } else {
-        bmr =
-            (10 * weight) +
-            (6.25 * height) -
-            (5 * age) -
-            161;
-    }
-
-    const activityMultiplier = {
-        sedentary: 1.2,
-        light: 1.375,
-        moderate: 1.55,
-        active: 1.725,
-        very_active: 1.9
-    };
-
-    const calorie = Math.round(
-        bmr * activityMultiplier[activity]
-    );
-
-    const water = (weight * 35) / 1000;
-
-    document.getElementById("bmiResult").textContent =
-        bmi.toFixed(1);
-
-    document.getElementById("bodyFatResult").textContent =
-        bodyFat.toFixed(1) + "%";
-
-    document.getElementById("calorieResult").textContent =
-        calorie + " kcal";
-
-    document.getElementById("waterResult").textContent =
-        water.toFixed(1) + " L";
-
-    healthData = {
-        age,
-        gender,
-        height,
-        weight,
-        activity,
-        bmi: Number(bmi.toFixed(1)),
-        bodyFat: Number(bodyFat.toFixed(1)),
-        calorie,
-        water: Number(water.toFixed(1))
-    };
-
-    generateAnalysis(
+    function generateAnalysis(
         age,
         gender,
         height,
@@ -1652,91 +1646,63 @@ function calculateHealth() {
         activity,
         bmi,
         bodyFat
-    );
+    ) {
+        const weightStatus =
+            document.getElementById("weightStatus");
 
-    document.getElementById("results").scrollIntoView({
-        behavior: "smooth"
-    });
-}
+        const weightAnalysis =
+            document.getElementById("weightAnalysis");
 
+        const activityStatus =
+            document.getElementById("activityStatus");
 
-/* =========================
-   ANALISIS PERSONAL
-========================= */
+        const activityAnalysis =
+            document.getElementById("activityAnalysis");
 
-function generateAnalysis(
-    age,
-    gender,
-    height,
-    weight,
-    activity,
-    bmi,
-    bodyFat
-) {
+        const nutritionAnalysis =
+            document.getElementById("nutritionAnalysis");
 
-    const weightStatus =
-        document.getElementById("weightStatus");
+        const nutritionList =
+            document.getElementById("nutritionList");
 
-    const weightAnalysis =
-        document.getElementById("weightAnalysis");
+        const exerciseAnalysis =
+            document.getElementById("exerciseAnalysis");
 
-    const activityStatus =
-        document.getElementById("activityStatus");
+        const exerciseList =
+            document.getElementById("exerciseList");
 
-    const activityAnalysis =
-        document.getElementById("activityAnalysis");
+        const actionAnalysis =
+            document.getElementById("actionAnalysis");
 
-    const nutritionAnalysis =
-        document.getElementById("nutritionAnalysis");
+        const actionList =
+            document.getElementById("actionList");
 
-    const nutritionList =
-        document.getElementById("nutritionList");
+        const healthNote =
+            document.getElementById("healthNote");
 
-    const exerciseAnalysis =
-        document.getElementById("exerciseAnalysis");
+        nutritionList.innerHTML = "";
+        exerciseList.innerHTML = "";
+        actionList.innerHTML = "";
 
-    const exerciseList =
-        document.getElementById("exerciseList");
+        if (age < 18) {
+            document.getElementById("bmiText").textContent =
+                "Estimasi BMI; penilaian remaja perlu mempertimbangkan pertumbuhan.";
 
-    const actionAnalysis =
-        document.getElementById("actionAnalysis");
+            document.getElementById("bodyFatText").textContent =
+                "Estimasi kasar dan bukan diagnosis.";
 
-    const actionList =
-        document.getElementById("actionList");
+            weightStatus.textContent =
+                "Perlu dilihat berdasarkan pertumbuhan";
 
-    const healthNote =
-        document.getElementById("healthNote");
-
-    nutritionList.innerHTML = "";
-    exerciseList.innerHTML = "";
-    actionList.innerHTML = "";
-
-
-    if (age < 18) {
-
-        document.getElementById("bmiText").textContent =
-            "Estimasi BMI; penilaian remaja perlu mempertimbangkan pertumbuhan.";
-
-        document.getElementById("bodyFatText").textContent =
-            "Estimasi kasar dan bukan diagnosis.";
-
-        weightStatus.textContent =
-            "Perlu dilihat berdasarkan pertumbuhan";
-
-        weightAnalysis.textContent =
-            "Karena usia kamu masih di bawah 18 tahun, BMI tidak sebaiknya digunakan sendirian untuk menentukan apakah berat badanmu normal, kurang, atau berlebih. Pertumbuhan dan jenis kelamin juga perlu diperhatikan.";
-
-        healthNote.textContent =
-            "ℹ️ Kamu masih dalam masa pertumbuhan. Hasil BMI dan body fat di halaman ini hanya perkiraan. Jangan melakukan diet ketat atau menaikkan/menurunkan berat badan secara ekstrem berdasarkan hasil ini.";
-
-        if (bmi < 18.5) {
+            weightAnalysis.textContent =
+                "Karena usia kamu masih di bawah 18 tahun, BMI tidak sebaiknya digunakan sendirian untuk menentukan kondisi berat badan. Pertumbuhan dan jenis kelamin juga perlu diperhatikan.";
 
             nutritionAnalysis.textContent =
-                "Berat badan terlihat relatif rendah dibandingkan tinggi badan berdasarkan BMI. Ini belum cukup untuk menyimpulkan kekurangan asupan.";
+                "Fokus pada makan teratur dan makanan yang beragam.";
 
             addListItem(
                 nutritionList,
-                "Pastikan makan utama tetap teratur."
+                "Makan utama secara teratur."
             );
 
             addListItem(
@@ -1746,665 +1712,493 @@ function generateAnalysis(
 
             addListItem(
                 nutritionList,
-                "Tambahkan sayur, buah, dan sumber karbohidrat yang cukup."
+                "Cukupi sayur, buah, sumber karbohidrat, dan cairan."
+            );
+
+            setActivityAnalysis(
+                activity,
+                activityStatus,
+                activityAnalysis
+            );
+
+            exerciseAnalysis.textContent =
+                "Pilih aktivitas yang kamu sukai agar lebih mudah dilakukan secara konsisten.";
+
+            addListItem(
+                exerciseList,
+                "Jalan cepat atau jogging ringan."
+            );
+
+            addListItem(
+                exerciseList,
+                "Badminton, bersepeda, atau olahraga permainan."
+            );
+
+            addListItem(
+                exerciseList,
+                "Latihan kekuatan ringan dengan teknik yang benar."
+            );
+
+            actionAnalysis.textContent =
+                "Fokus utama adalah membangun kebiasaan sehat, bukan mengejar angka tertentu.";
+
+            addListItem(
+                actionList,
+                "Makan secara teratur dan beragam."
+            );
+
+            addListItem(
+                actionList,
+                "Aktif bergerak secara rutin."
+            );
+
+            addListItem(
+                actionList,
+                "Tidur cukup dan menjaga jadwal tidur."
+            );
+
+            addListItem(
+                actionList,
+                "Konsultasikan dengan tenaga kesehatan bila ada kekhawatiran mengenai pertumbuhan atau berat badan."
+            );
+
+            healthNote.textContent =
+                "ℹ️ Kamu masih dalam masa pertumbuhan. Hasil BMI dan body fat di halaman ini hanya perkiraan. Jangan melakukan diet ketat atau perubahan berat badan secara ekstrem berdasarkan hasil ini.";
+
+            return;
+        }
+
+        let category;
+
+        if (bmi < 18.5) {
+            category = "Di bawah rentang BMI umum";
+
+            document.getElementById("bmiText").textContent =
+                "BMI berada di bawah 18,5.";
+
+            weightAnalysis.textContent =
+                "Berat badan berada di bawah rentang BMI umum untuk orang dewasa.";
+
+            nutritionAnalysis.textContent =
+                "Perhatikan kecukupan makan dan kualitas makanan.";
+
+            addListItem(
+                nutritionList,
+                "Makan secara teratur."
+            );
+
+            addListItem(
+                nutritionList,
+                "Utamakan protein seperti telur, ikan, ayam, tempe, dan tahu."
+            );
+
+            addListItem(
+                nutritionList,
+                "Cukupi sumber energi dan makanan beragam."
             );
 
         } else if (bmi < 25) {
+            category = "Dalam rentang BMI umum";
+
+            document.getElementById("bmiText").textContent =
+                "BMI berada dalam rentang 18,5–24,9.";
+
+            weightAnalysis.textContent =
+                "Berat badan berada dalam rentang BMI yang umum digunakan untuk orang dewasa.";
 
             nutritionAnalysis.textContent =
-                "Perbandingan berat dan tinggi terlihat relatif seimbang berdasarkan BMI, tetapi pola makan tetap perlu dijaga.";
+                "Fokus mempertahankan pola makan yang beragam dan seimbang.";
 
             addListItem(
                 nutritionList,
-                "Pertahankan makan teratur dan beragam."
+                "Pertahankan makan teratur."
             );
 
             addListItem(
                 nutritionList,
-                "Cukupi protein, sayur, buah, dan cairan."
+                "Cukupi protein, sayur, buah, dan sumber karbohidrat."
             );
 
             addListItem(
                 nutritionList,
-                "Tidak perlu melakukan diet ketat hanya karena angka BMI."
+                "Batasi minuman manis dan makanan ultra-proses secara wajar."
+            );
+
+        } else if (bmi < 30) {
+            category = "Di atas rentang BMI umum";
+
+            document.getElementById("bmiText").textContent =
+                "BMI berada di atas 25.";
+
+            weightAnalysis.textContent =
+                "Berat badan berada di atas rentang BMI yang umum digunakan untuk orang dewasa.";
+
+            nutritionAnalysis.textContent =
+                "Fokus pada kualitas makanan dan perubahan kebiasaan yang dapat dipertahankan.";
+
+            addListItem(
+                nutritionList,
+                "Tetap makan teratur dan hindari diet ekstrem."
+            );
+
+            addListItem(
+                nutritionList,
+                "Perbanyak sayur, buah, dan sumber protein."
+            );
+
+            addListItem(
+                nutritionList,
+                "Kurangi minuman manis dan makanan ultra-proses secara bertahap."
             );
 
         } else {
+            category = "BMI tinggi";
+
+            document.getElementById("bmiText").textContent =
+                "BMI berada pada 30 atau lebih.";
+
+            weightAnalysis.textContent =
+                "BMI berada pada tingkat tinggi menurut kategori BMI dewasa. BMI bukan diagnosis.";
 
             nutritionAnalysis.textContent =
-                "Berat badan terlihat relatif tinggi dibandingkan tinggi badan berdasarkan BMI. Pada usia remaja, hasil ini perlu dilihat bersama pertumbuhan.";
+                "Fokus pada pola makan seimbang dan perubahan kebiasaan secara bertahap.";
 
             addListItem(
                 nutritionList,
-                "Tetap makan teratur dan jangan melewatkan makan."
+                "Hindari diet ekstrem atau melewatkan makan."
             );
 
             addListItem(
                 nutritionList,
-                "Batasi minuman manis dan makanan ultra-proses secara bertahap."
+                "Utamakan makanan dengan protein, sayur, buah, dan sumber karbohidrat."
             );
 
             addListItem(
                 nutritionList,
-                "Perbanyak makanan beragam seperti protein, sayur, buah, dan sumber karbohidrat."
+                "Kurangi minuman tinggi gula dan makanan ultra-proses secara bertahap."
             );
         }
 
-        if (activity === "sedentary") {
+        weightStatus.textContent = category;
 
-            activityStatus.textContent =
-                "Aktivitas masih rendah";
-
-            activityAnalysis.textContent =
-                "Kamu cukup jarang bergerak. Aktivitas dapat ditambah secara perlahan tanpa harus langsung melakukan olahraga berat.";
-
-        } else if (activity === "light") {
-
-            activityStatus.textContent =
-                "Aktivitas ringan";
-
-            activityAnalysis.textContent =
-                "Kamu sudah memiliki aktivitas ringan. Selanjutnya bisa mempertahankan rutinitas dan menambah durasi secara bertahap.";
-
-        } else if (activity === "moderate") {
-
-            activityStatus.textContent =
-                "Cukup aktif";
-
-            activityAnalysis.textContent =
-                "Aktivitasmu sudah cukup baik. Fokus pada konsistensi dan keseimbangan antara olahraga, makan, dan istirahat.";
-
-        } else {
-
-            activityStatus.textContent =
-                "Aktif";
-
-            activityAnalysis.textContent =
-                "Aktivitasmu cukup tinggi. Pastikan makan, cairan, dan waktu istirahat tetap mencukupi.";
-        }
-
+        setActivityAnalysis(
+            activity,
+            activityStatus,
+            activityAnalysis
+        );
 
         exerciseAnalysis.textContent =
-            "Pilih aktivitas yang kamu sukai agar lebih mudah dilakukan secara konsisten.";
+            "Pilih olahraga sesuai kemampuan dan tingkat aktivitasmu.";
 
-        addListItem(
-            exerciseList,
-            "Jalan cepat atau jogging ringan."
-        );
+        if (activity === "sedentary") {
+            addListItem(
+                exerciseList,
+                "Mulai dengan jalan kaki 15–30 menit."
+            );
 
-        addListItem(
-            exerciseList,
-            "Badminton, bersepeda, atau olahraga permainan."
-        );
+            addListItem(
+                exerciseList,
+                "Stretching dan latihan kekuatan ringan."
+            );
 
-        addListItem(
-            exerciseList,
-            "Latihan kekuatan ringan dengan teknik yang benar."
-        );
+            addListItem(
+                exerciseList,
+                "Naikkan durasi secara perlahan."
+            );
 
-        addListItem(
-            exerciseList,
-            "Mulai secara bertahap dan berikan waktu istirahat."
-        );
+        } else if (activity === "light") {
+            addListItem(
+                exerciseList,
+                "Jalan cepat atau jogging ringan."
+            );
 
+            addListItem(
+                exerciseList,
+                "Badminton, bersepeda, atau olahraga permainan."
+            );
+
+            addListItem(
+                exerciseList,
+                "Latihan kekuatan secara bertahap."
+            );
+
+        } else {
+            addListItem(
+                exerciseList,
+                "Pertahankan kombinasi latihan kardio dan kekuatan."
+            );
+
+            addListItem(
+                exerciseList,
+                "Berikan waktu istirahat yang cukup."
+            );
+
+            addListItem(
+                exerciseList,
+                "Sesuaikan intensitas dengan kemampuan dan kondisi tubuh."
+            );
+        }
 
         actionAnalysis.textContent =
-            "Fokus utama bukan mengejar angka berat badan tertentu, tetapi membangun kebiasaan sehat.";
+            "Fokus utama adalah memperbaiki kebiasaan secara bertahap.";
 
         addListItem(
             actionList,
-            "Makan secara teratur dan beragam."
-        );
-
-        addListItem(
-            actionList,
-            "Aktif bergerak secara rutin."
+            "Pertahankan jadwal makan yang teratur."
         );
 
         addListItem(
             actionList,
-            "Tidur cukup dan menjaga jadwal tidur."
+            "Pilih makanan yang beragam dan cukup bergizi."
         );
 
         addListItem(
             actionList,
-            "Jika khawatir dengan pertumbuhan atau berat badan, konsultasikan dengan tenaga kesehatan."
+            "Lakukan aktivitas fisik secara rutin."
         );
 
-        return;
+        addListItem(
+            actionList,
+            "Tidur cukup dan berikan waktu pemulihan setelah olahraga."
+        );
+
+        healthNote.textContent =
+            "ℹ️ Hasil ini adalah perkiraan dari data yang dimasukkan. BMI dan body fat tidak dapat menggambarkan seluruh kondisi kesehatan seseorang.";
     }
 
-
-    let category;
-
-    if (bmi < 18.5) {
-
-        category = "Di bawah rentang BMI umum";
-
-        document.getElementById("bmiText").textContent =
-            "BMI berada di bawah 18,5.";
-
-        weightAnalysis.textContent =
-            "Berat badan berada di bawah rentang BMI umum untuk orang dewasa. Ini belum otomatis berarti kekurangan gizi.";
-
-        nutritionAnalysis.textContent =
-            "Perhatikan kecukupan makan dan kualitas makanan.";
-
-        addListItem(
-            nutritionList,
-            "Makan secara teratur."
-        );
-
-        addListItem(
-            nutritionList,
-            "Utamakan protein seperti telur, ikan, ayam, tempe, dan tahu."
-        );
-
-        addListItem(
-            nutritionList,
-            "Tambahkan sumber energi bergizi seperti nasi, kentang, oats, kacang-kacangan, dan susu bila cocok."
-        );
-
-    } else if (bmi < 25) {
-
-        category = "Dalam rentang BMI umum";
-
-        document.getElementById("bmiText").textContent =
-            "BMI berada dalam rentang 18,5–24,9.";
-
-        weightAnalysis.textContent =
-            "Berat badan berada dalam rentang BMI yang umum digunakan untuk orang dewasa.";
-
-        nutritionAnalysis.textContent =
-            "Fokus mempertahankan pola makan yang beragam dan seimbang.";
-
-        addListItem(
-            nutritionList,
-            "Pertahankan makan teratur."
-        );
-
-        addListItem(
-            nutritionList,
-            "Cukupi protein, sayur, buah, dan sumber karbohidrat."
-        );
-
-        addListItem(
-            nutritionList,
-            "Batasi minuman manis dan makanan ultra-proses secara wajar."
-        );
-
-    } else if (bmi < 30) {
-
-        category = "Di atas rentang BMI umum";
-
-        document.getElementById("bmiText").textContent =
-            "BMI berada di atas 25.";
-
-        weightAnalysis.textContent =
-            "Berat badan berada di atas rentang BMI yang umum digunakan untuk orang dewasa. BMI tidak dapat menentukan komposisi tubuh secara pasti.";
-
-        nutritionAnalysis.textContent =
-            "Fokus pada kualitas makanan dan kebiasaan yang dapat dipertahankan.";
-
-        addListItem(
-            nutritionList,
-            "Tetap makan teratur dan hindari diet ekstrem."
-        );
-
-        addListItem(
-            nutritionList,
-            "Perbanyak sayur, buah, dan sumber protein."
-        );
-
-        addListItem(
-            nutritionList,
-            "Kurangi minuman manis dan makanan ultra-proses secara bertahap."
-        );
-
-    } else {
-
-        category = "BMI tinggi";
-
-        document.getElementById("bmiText").textContent =
-            "BMI berada pada 30 atau lebih.";
-
-        weightAnalysis.textContent =
-            "BMI berada pada tingkat tinggi menurut kategori BMI dewasa. BMI bukan diagnosis dan sebaiknya dinilai bersama faktor kesehatan lainnya.";
-
-        nutritionAnalysis.textContent =
-            "Fokus pada pola makan seimbang dan perubahan kebiasaan secara bertahap.";
-
-        addListItem(
-            nutritionList,
-            "Hindari diet ekstrem atau melewatkan makan."
-        );
-
-        addListItem(
-            nutritionList,
-            "Utamakan makanan dengan protein, sayur, buah, dan sumber karbohidrat."
-        );
-
-        addListItem(
-            nutritionList,
-            "Kurangi minuman tinggi gula dan makanan ultra-proses secara bertahap."
-        );
-    }
-
-    weightStatus.textContent = category;
-
-
-    if (activity === "sedentary") {
-
-        activityStatus.textContent =
-            "Aktivitas rendah";
-
-        activityAnalysis.textContent =
-            "Aktivitas harianmu masih rendah. Menambah gerakan secara bertahap dapat membantu kebugaran.";
-
-    } else if (activity === "light") {
-
-        activityStatus.textContent =
-            "Aktivitas ringan";
-
-        activityAnalysis.textContent =
-            "Kamu sudah bergerak, tetapi masih dapat menambah aktivitas secara perlahan.";
-
-    } else if (activity === "moderate") {
-
-        activityStatus.textContent =
-            "Cukup aktif";
-
-        activityAnalysis.textContent =
-            "Aktivitasmu cukup baik. Pertahankan konsistensi dan beri waktu tubuh untuk pulih.";
-
-    } else if (activity === "active") {
-
-        activityStatus.textContent =
-            "Aktif";
-
-        activityAnalysis.textContent =
-            "Aktivitasmu cukup tinggi. Pastikan asupan makanan, cairan, dan istirahat sesuai kebutuhan.";
-
-    } else {
-
-        activityStatus.textContent =
-            "Sangat aktif";
-
-        activityAnalysis.textContent =
-            "Aktivitasmu sangat tinggi. Perhatikan pemulihan, cairan, dan kecukupan makanan.";
-    }
-
-
-    exerciseAnalysis.textContent =
-        "Pilih olahraga sesuai kemampuan dan tingkat aktivitasmu.";
-
-    if (activity === "sedentary") {
-
-        addListItem(
-            exerciseList,
-            "Mulai dengan jalan kaki 15–30 menit."
-        );
-
-        addListItem(
-            exerciseList,
-            "Stretching dan latihan kekuatan ringan."
-        );
-
-        addListItem(
-            exerciseList,
-            "Naikkan durasi secara perlahan."
-        );
-
-    } else if (activity === "light") {
-
-        addListItem(
-            exerciseList,
-            "Jalan cepat atau jogging ringan."
-        );
-
-        addListItem(
-            exerciseList,
-            "Badminton, bersepeda, atau olahraga permainan."
-        );
-
-        addListItem(
-            exerciseList,
-            "Latihan kekuatan 2–3 kali seminggu secara bertahap."
-        );
-
-    } else {
-
-        addListItem(
-            exerciseList,
-            "Pertahankan kombinasi latihan kardio dan kekuatan."
-        );
-
-        addListItem(
-            exerciseList,
-            "Berikan waktu istirahat yang cukup."
-        );
-
-        addListItem(
-            exerciseList,
-            "Sesuaikan intensitas dengan kemampuan dan kondisi tubuh."
-        );
-    }
-
-
-    actionAnalysis.textContent =
-        "Berdasarkan data yang kamu masukkan, fokus terbaik adalah memperbaiki kebiasaan secara bertahap.";
-
-    addListItem(
-        actionList,
-        "Pertahankan jadwal makan yang teratur."
-    );
-
-    addListItem(
-        actionList,
-        "Pilih makanan yang beragam dan cukup bergizi."
-    );
-
-    addListItem(
-        actionList,
-        "Lakukan aktivitas fisik secara rutin."
-    );
-
-    addListItem(
-        actionList,
-        "Tidur cukup dan berikan waktu pemulihan setelah olahraga."
-    );
-
-    healthNote.textContent =
-        "ℹ️ Hasil ini adalah perkiraan dari data yang dimasukkan. BMI dan body fat tidak dapat menggambarkan seluruh kondisi kesehatan seseorang.";
-}
-
-
-/* =========================
-   TAMBAH LIST
-========================= */
-
-function addListItem(list, text) {
-
-    const li = document.createElement("li");
-
-    li.textContent = text;
-
-    list.appendChild(li);
-}
-
-
-/* =========================
-   FORMAT JAWABAN AI
-========================= */
-
-function formatAIMessage(text) {
-
-    let clean = text
-        .replace(/\r/g, "")
-        .replace(/\*\*(.*?)\*\*/g, "$1")
-        .replace(/__(.*?)__/g, "$1")
-        .trim();
-
-    const lines = clean.split("\n");
-
-    let html = "";
-    let paragraph = [];
-    let listMode = null;
-
-    function closeParagraph() {
-
-        if (paragraph.length > 0) {
-
-            html +=
-                `<p>${escapeHTML(paragraph.join(" "))}</p>`;
-
-            paragraph = [];
+    function setActivityAnalysis(
+        activity,
+        statusElement,
+        analysisElement
+    ) {
+        if (activity === "sedentary") {
+            statusElement.textContent = "Aktivitas rendah";
+            analysisElement.textContent =
+                "Aktivitas harianmu masih rendah. Menambah gerakan secara bertahap dapat membantu kebugaran.";
+
+        } else if (activity === "light") {
+            statusElement.textContent = "Aktivitas ringan";
+            analysisElement.textContent =
+                "Kamu sudah memiliki aktivitas ringan. Pertahankan dan tingkatkan secara bertahap.";
+
+        } else if (activity === "moderate") {
+            statusElement.textContent = "Cukup aktif";
+            analysisElement.textContent =
+                "Aktivitasmu cukup baik. Pertahankan konsistensi dan beri waktu tubuh untuk pulih.";
+
+        } else if (activity === "active") {
+            statusElement.textContent = "Aktif";
+            analysisElement.textContent =
+                "Aktivitasmu cukup tinggi. Pastikan asupan makanan, cairan, dan istirahat sesuai kebutuhan.";
+
+        } else {
+            statusElement.textContent = "Sangat aktif";
+            analysisElement.textContent =
+                "Aktivitasmu sangat tinggi. Perhatikan pemulihan, cairan, dan kecukupan makanan.";
         }
     }
 
-    function closeList() {
-
-        if (listMode) {
-
-            html +=
-                listMode === "ol"
-                    ? "</ol>"
-                    : "</ul>";
-
-            listMode = null;
-        }
+    function addListItem(list, text) {
+        const li = document.createElement("li");
+        li.textContent = text;
+        list.appendChild(li);
     }
 
-    for (const rawLine of lines) {
+    function escapeHTML(text) {
+        const div = document.createElement("div");
+        div.textContent = text;
+        return div.innerHTML;
+    }
 
-        const line = rawLine.trim();
+    function formatAIMessage(text) {
+        const clean = text
+            .replace(/\r/g, "")
+            .replace(/\*\*(.*?)\*\*/g, "$1")
+            .replace(/__(.*?)__/g, "$1")
+            .trim();
 
-        if (!line) {
-            closeParagraph();
+        const lines = clean.split("\n");
+
+        let html = "";
+        let paragraph = [];
+        let listMode = null;
+
+        function closeParagraph() {
+            if (paragraph.length > 0) {
+                html += `<p>${escapeHTML(
+                    paragraph.join(" ")
+                )}</p>`;
+                paragraph = [];
+            }
+        }
+
+        function closeList() {
+            if (listMode) {
+                html += listMode === "ol" ? "</ol>" : "</ul>";
+                listMode = null;
+            }
+        }
+
+        for (const rawLine of lines) {
+            const line = rawLine.trim();
+
+            if (!line) {
+                closeParagraph();
+                closeList();
+                continue;
+            }
+
+            const numbered =
+                line.match(/^(\d+)[.)]\s+(.*)$/);
+
+            const bullet =
+                line.match(/^[-•]\s+(.*)$/);
+
+            if (numbered) {
+                closeParagraph();
+
+                if (listMode !== "ol") {
+                    closeList();
+                    html += "<ol>";
+                    listMode = "ol";
+                }
+
+                html += `<li>${escapeHTML(
+                    numbered[2]
+                )}</li>`;
+
+                continue;
+            }
+
+            if (bullet) {
+                closeParagraph();
+
+                if (listMode !== "ul") {
+                    closeList();
+                    html += "<ul>";
+                    listMode = "ul";
+                }
+
+                html += `<li>${escapeHTML(
+                    bullet[1]
+                )}</li>`;
+
+                continue;
+            }
+
             closeList();
-            continue;
+            paragraph.push(line);
         }
 
-        const numbered =
-            line.match(/^(\d+)[.)]\s+(.*)$/);
-
-        const bullet =
-            line.match(/^[-•]\s+(.*)$/);
-
-        if (numbered) {
-
-            closeParagraph();
-
-            if (listMode !== "ol") {
-                closeList();
-                html += "<ol>";
-                listMode = "ol";
-            }
-
-            html +=
-                `<li>${escapeHTML(numbered[2])}</li>`;
-
-            continue;
-        }
-
-        if (bullet) {
-
-            closeParagraph();
-
-            if (listMode !== "ul") {
-                closeList();
-                html += "<ul>";
-                listMode = "ul";
-            }
-
-            html +=
-                `<li>${escapeHTML(bullet[1])}</li>`;
-
-            continue;
-        }
-
+        closeParagraph();
         closeList();
 
-        paragraph.push(line);
+        return html || escapeHTML(clean);
     }
 
-    closeParagraph();
-    closeList();
+    function addMessage(text, type) {
+        const chatBox =
+            document.getElementById("chatBox");
 
-    return html || escapeHTML(clean);
-}
+        const message =
+            document.createElement("div");
 
+        message.className =
+            "message " + type;
 
-/* =========================
-   ESCAPE HTML
-========================= */
-
-function escapeHTML(text) {
-
-    const div =
-        document.createElement("div");
-
-    div.textContent = text;
-
-    return div.innerHTML;
-}
-
-
-/* =========================
-   CHAT AI
-========================= */
-
-function addMessage(text, type) {
-
-    const chatBox =
-        document.getElementById("chatBox");
-
-    const message =
-        document.createElement("div");
-
-    message.className =
-        "message " + type;
-
-    if (type === "ai") {
-
-        message.innerHTML =
-            formatAIMessage(text);
-
-    } else {
-
-        message.textContent =
-            text;
-    }
-
-    chatBox.appendChild(message);
-
-    chatBox.scrollTop =
-        chatBox.scrollHeight;
-}
-
-
-function askQuick(text) {
-
-    document.getElementById("chatInput").value =
-        text;
-
-    sendMessage();
-}
-
-
-async function sendMessage() {
-
-    const input =
-        document.getElementById("chatInput");
-
-    const typingText =
-        document.getElementById("typingText");
-
-    const message =
-        input.value.trim();
-
-    if (!message) {
-        return;
-    }
-
-    addMessage(
-        message,
-        "user"
-    );
-
-    input.value = "";
-
-    chatHistory.push({
-        role: "user",
-        content: message
-    });
-
-    typingText.textContent =
-        "NutriCheck AI sedang menyiapkan jawaban...";
-
-    try {
-
-        const response =
-            await fetch(
-                "/api/chat",
-                {
-                    method: "POST",
-
-                    headers: {
-                        "Content-Type":
-                            "application/json"
-                    },
-
-                    body: JSON.stringify({
-                        message,
-                        healthData,
-                        history:
-                            chatHistory.slice(-4)
-                    })
-                }
-            );
-
-        const data =
-            await response.json();
-
-        if (!response.ok) {
-
-            throw new Error(
-                data.error ||
-                "Terjadi kesalahan."
-            );
+        if (type === "ai") {
+            message.innerHTML =
+                formatAIMessage(text);
+        } else {
+            message.textContent = text;
         }
 
-        const reply =
-            data.reply ||
-            "Maaf, belum ada jawaban.";
+        chatBox.appendChild(message);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
 
-        addMessage(
-            reply,
-            "ai"
-        );
+    function askQuick(text) {
+        document.getElementById("chatInput").value = text;
+        sendMessage();
+    }
+
+    async function sendMessage() {
+        const input =
+            document.getElementById("chatInput");
+
+        const typingText =
+            document.getElementById("typingText");
+
+        const message =
+            input.value.trim();
+
+        if (!message) {
+            return;
+        }
+
+        addMessage(message, "user");
+        input.value = "";
 
         chatHistory.push({
-            role: "assistant",
-            content: reply
+            role: "user",
+            content: message
         });
 
-    } catch (error) {
+        typingText.textContent =
+            "NutriCheck AI sedang menyiapkan jawaban...";
 
-        addMessage(
-            "Maaf, NutriCheck AI sedang mengalami kendala. 🔄 Coba kirim pertanyaan lagi.",
-            "ai"
-        );
+        try {
+            const response = await fetch("/api/chat", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    message,
+                    healthData,
+                    history: chatHistory.slice(-4)
+                })
+            });
 
-        console.error(
-            "Chat Error:",
-            error
-        );
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(
+                    data.error || "Terjadi kesalahan."
+                );
+            }
+
+            const reply =
+                data.reply ||
+                "Maaf, belum ada jawaban.";
+
+            addMessage(reply, "ai");
+
+            chatHistory.push({
+                role: "assistant",
+                content: reply
+            });
+
+        } catch (error) {
+            console.error("Chat Error:", error);
+
+            addMessage(
+                "Maaf, NutriCheck AI sedang mengalami kendala. 🔄 Coba kirim pertanyaan lagi.",
+                "ai"
+            );
+        }
+
+        typingText.textContent = "";
     }
 
-    typingText.textContent = "";
-}
-
-
-/* =========================
-   ENTER UNTUK CHAT
-========================= */
-
-document
-    .getElementById("chatInput")
-    .addEventListener(
-        "keydown",
-        function(event) {
-
+    document
+        .getElementById("chatInput")
+        .addEventListener("keydown", function(event) {
             if (event.key === "Enter") {
-
                 event.preventDefault();
-
                 sendMessage();
             }
-        }
-    );
-
+        });
 </script>
 
 </body>
