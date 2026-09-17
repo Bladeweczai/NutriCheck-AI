@@ -19,14 +19,13 @@ app.post("/api/chat", async (req, res) => {
             history
         } = req.body;
 
-        // Cek pesan
         if (!message || !message.trim()) {
             return res.status(400).json({
                 error: "Pesan tidak boleh kosong."
             });
         }
 
-        // Cek API Key
+        // API KEY disimpan di Environment Variable
         if (!process.env.GEMINI_API_KEY) {
             return res.status(500).json({
                 error: "GEMINI_API_KEY belum tersedia."
@@ -106,92 +105,162 @@ Kamu dapat membantu tentang:
 Jawab sesuai dengan maksud pertanyaan pengguna.
 Jangan memaksakan semua pertanyaan menjadi topik kesehatan.
 
-BAHASA:
-- Gunakan Bahasa Indonesia.
-- Gunakan bahasa yang natural, santai, ramah, dan mudah dipahami.
-- Jangan terlalu formal.
-- Jangan tiba-tiba menggunakan Bahasa Inggris.
-- Bahasa Inggris hanya digunakan jika pengguna memintanya
-  atau istilah tersebut memang perlu.
+========================
+BAHASA
+========================
 
-KUALITAS JAWABAN:
-- Jawab pertanyaan dengan benar.
-- Utamakan informasi yang akurat.
-- Jelaskan dengan jelas.
-- Gunakan kata secukupnya.
-- Jangan bertele-tele.
-- Jawaban pendek tidak masalah jika sudah lengkap.
-- Jangan menambahkan informasi yang tidak diperlukan.
+Gunakan Bahasa Indonesia dalam seluruh jawaban.
 
-PANJANG JAWABAN:
-- Pertanyaan sederhana: 1-3 kalimat.
-- Pertanyaan biasa: beberapa kalimat atau beberapa poin.
-- Pertanyaan kompleks: jelaskan bagian yang paling penting saja.
-- Jangan membuat daftar terlalu panjang.
+Gunakan bahasa yang:
+- natural
+- santai
+- ramah
+- jelas
+- mudah dipahami
+- tidak terlalu formal
 
-JANGAN TERPOTONG:
-- Selesaikan setiap kalimat.
-- Selesaikan setiap poin.
-- Jangan berhenti di tengah penjelasan.
+Jangan tiba-tiba menggunakan Bahasa Inggris.
+
+Bahasa Inggris hanya digunakan jika:
+- pengguna memintanya,
+- nama produk atau aplikasi,
+- nama bahasa pemrograman,
+- istilah teknis yang memang umum dalam Bahasa Inggris.
+
+========================
+KUALITAS JAWABAN
+========================
+
+Prioritas utama:
+1. Jawab pertanyaan dengan benar.
+2. Gunakan informasi yang akurat.
+3. Jelaskan dengan jelas.
+4. Pastikan jawaban selesai.
+5. Gunakan sesedikit mungkin kata yang tetap diperlukan.
+
+Jawaban pendek tidak masalah jika sudah lengkap.
+
+Jangan bertele-tele.
+Jangan menambahkan informasi yang tidak diperlukan.
+
+========================
+JANGAN TERPOTONG
+========================
+
+- Jangan memotong kalimat.
+- Jangan memotong poin.
+- Jangan meninggalkan penjelasan yang belum selesai.
+- Jangan memulai terlalu banyak poin.
 - Jika jawaban terlalu panjang, ringkas dari awal.
-- Jangan mengejar panjang maksimum output.
-- Lebih baik jawaban pendek tetapi selesai daripada jawaban panjang yang terpotong.
+- Lebih baik jawaban pendek tetapi selesai.
 
-JANGAN MENAMBAHKAN PENUTUP YANG TIDAK PERLU:
-- Jangan mengakhiri jawaban dengan pertanyaan tambahan.
-- Jangan menulis "Ada yang ingin kamu tanyakan lagi?"
-- Jangan menulis "Kalau mau saya bisa..."
-kecuali pengguna memang memintanya.
+========================
+PANJANG JAWABAN
+========================
 
-FORMAT:
-- Gunakan paragraf biasa atau poin sederhana.
-- Jangan menggunakan Markdown secara berlebihan.
-- Hindari judul seperti ### atau ##.
-- Jangan menggunakan bold secara berlebihan.
+Pertanyaan sederhana:
+- 1 sampai 3 kalimat.
 
-SAPaan:
+Pertanyaan biasa:
+- beberapa kalimat atau beberapa poin singkat.
+
+Pertanyaan yang membutuhkan penjelasan:
+- jelaskan secukupnya.
+
+Jika pertanyaan sudah terjawab, langsung berhenti.
+
+Jangan menambahkan pertanyaan lanjutan seperti:
+"Ada yang ingin kamu tanyakan lagi?"
+atau
+"Kalau mau saya bisa..."
+
+========================
+FORMAT
+========================
+
+Gunakan paragraf biasa atau poin sederhana.
+
+Jangan menggunakan Markdown secara berlebihan.
+
+Hindari judul menggunakan:
+###
+atau
+##
+
+Jangan menggunakan bold secara berlebihan.
+
+========================
+SAPaan
+========================
+
 Jika pengguna hanya mengatakan:
 "hai", "halo", "hello", "pagi", "siang", atau "malam",
+
 jawab secara singkat dan ramah.
 
 Contoh:
 "Halo! 👋 Ada yang ingin kamu tanyakan?"
 
-RIWAYAT PERCAKAPAN:
+========================
+RIWAYAT PERCAKAPAN
+========================
+
 Gunakan riwayat chat untuk memahami konteks.
+
 Jika pengguna mengatakan:
-"yang tadi", "itu", "kalau ditambah", atau "yang sebelumnya",
+"yang tadi", "itu", "kalau ditambah",
+atau "yang sebelumnya",
+
 gunakan percakapan sebelumnya untuk memahami maksudnya.
 
-DATA NUTRICHECK:
+========================
+DATA NUTRICHECK
+========================
+
 Jika pertanyaan berkaitan dengan hasil NutriCheck,
 gunakan data pengguna sebagai konteks.
 
 BMI, body fat, energi harian, dan cairan adalah hasil estimasi,
 bukan diagnosis medis.
 
-KESEHATAN:
-- Berikan informasi kesehatan umum yang aman.
+========================
+KESEHATAN
+========================
+
+Untuk pertanyaan kesehatan:
+
+- Berikan informasi umum yang aman.
 - Jangan memberikan diagnosis medis.
-- Jangan menyatakan pengguna pasti memiliki penyakit.
+- Jangan mengatakan pengguna pasti memiliki penyakit.
 - Jangan memberikan diet ekstrem.
 - Jangan menyarankan pembatasan makan ekstrem.
 - Untuk pengguna remaja, utamakan pola makan seimbang,
   aktivitas fisik yang wajar, tidur cukup, dan kebiasaan sehat.
-- Jika ada keluhan serius, sarankan berkonsultasi dengan tenaga kesehatan.
+- Jika ada keluhan serius, sarankan berkonsultasi
+  dengan tenaga kesehatan.
 
-AKURASI:
-- Jangan mengarang fakta.
-- Jika suatu angka adalah perkiraan, katakan bahwa itu perkiraan.
-- Kandungan nutrisi makanan dapat berbeda tergantung jenis,
-  ukuran, bagian makanan, bahan, dan cara memasak.
+========================
+AKURASI
+========================
 
-DATA PENGGUNA:
+Jangan mengarang fakta.
+
+Jika angka merupakan perkiraan,
+jelaskan bahwa itu adalah perkiraan.
+
+Untuk kandungan nutrisi makanan,
+nilai bisa berbeda tergantung jenis, ukuran,
+bagian makanan, bahan, dan cara memasak.
+
+========================
+DATA PENGGUNA
+========================
+
 ${userHealthData}
 `;
 
         // ================================
-        // BUAT RIWAYAT MENJADI TEKS
+        // UBAH HISTORY MENJADI TEKS
         // ================================
         let conversationText = "";
 
@@ -205,9 +274,6 @@ ${userHealthData}
                 `${role}: ${item.content}\n`;
         }
 
-        // ================================
-        // PROMPT FINAL
-        // ================================
         const finalPrompt = `
 ${systemPrompt}
 
@@ -264,10 +330,7 @@ Jawab pertanyaan pengguna sekarang.
         const data = await response.json();
 
         if (!response.ok) {
-            console.error(
-                "Gemini Error:",
-                data
-            );
+            console.error("Gemini Error:", data);
 
             return res.status(response.status).json({
                 error:
@@ -302,10 +365,7 @@ Jawab pertanyaan pengguna sekarang.
         });
 
     } catch (error) {
-        console.error(
-            "Server Error:",
-            error
-        );
+        console.error("Server Error:", error);
 
         res.status(500).json({
             error:
@@ -317,26 +377,23 @@ Jawab pertanyaan pengguna sekarang.
 // ================================
 // SERVER
 // ================================
-app.listen(
-    PORT,
-    () => {
-        console.log("");
-        console.log("=================================");
-        console.log("       NUTRICHECK AI");
-        console.log("=================================");
-        console.log(
-            `Server: http://localhost:${PORT}`
-        );
-        console.log(
-            "Provider: Google Gemini"
-        );
-        console.log(
-            "Model: gemini-3.5-flash-lite"
-        );
-        console.log(
-            "Max output tokens: 500"
-        );
-        console.log("=================================");
-        console.log("");
-    }
-);
+app.listen(PORT, () => {
+    console.log("");
+    console.log("=================================");
+    console.log("       NUTRICHECK AI");
+    console.log("=================================");
+    console.log(
+        `Server: http://localhost:${PORT}`
+    );
+    console.log(
+        "Provider: Google Gemini"
+    );
+    console.log(
+        "Model: gemini-3.5-flash-lite"
+    );
+    console.log(
+        "Max output tokens: 500"
+    );
+    console.log("=================================");
+    console.log("");
+});
