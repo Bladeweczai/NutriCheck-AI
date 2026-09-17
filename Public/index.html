@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -523,8 +524,6 @@
         background: rgba(22,119,255,0.09);
     }
 
-    /* PERSONAL ANALYSIS */
-
     .analysis-grid {
         display: grid;
         grid-template-columns: repeat(2,1fr);
@@ -800,9 +799,11 @@
         font-size: 12px;
         line-height: 1.65;
 
-        /* PERBAIKAN TEKS DI HP */
-        white-space: normal;
-        word-wrap: break-word;
+        /* Tetap mempertahankan enter dan paragraf */
+        white-space: pre-wrap;
+
+        /* Teks panjang tidak keluar dari bubble */
+        word-break: break-word;
         overflow-wrap: anywhere;
     }
 
@@ -816,6 +817,30 @@
         margin-left: auto;
         color: #fff;
         background: linear-gradient(135deg, var(--blue), #0d5ed7);
+    }
+
+    .message.ai p,
+    .message.user p {
+        margin: 0 0 9px;
+    }
+
+    .message.ai p:last-child,
+    .message.user p:last-child {
+        margin-bottom: 0;
+    }
+
+    .message.ai ol,
+    .message.ai ul,
+    .message.user ol,
+    .message.user ul {
+        margin: 6px 0 8px 20px;
+        padding: 0;
+    }
+
+    .message.ai li,
+    .message.user li {
+        margin-bottom: 5px;
+        line-height: 1.6;
     }
 
     .typing {
@@ -949,6 +974,12 @@
         .hero-orb {
             width: 145px;
             height: 145px;
+        }
+
+        .message {
+            max-width: 94%;
+            font-size: 12px;
+            line-height: 1.6;
         }
     }
 </style>
@@ -1141,57 +1172,41 @@
 
             <div class="glass-card stat-card">
                 <div class="stat-icon">⚖️</div>
-
                 <h3>BMI</h3>
-
                 <div class="stat-value" id="bmiResult">—</div>
-
                 <div class="stat-desc" id="bmiText">
                     Masukkan data untuk melihat hasil.
                 </div>
-
                 <div class="stat-glow"></div>
             </div>
 
             <div class="glass-card stat-card">
                 <div class="stat-icon">📊</div>
-
                 <h3>Body Fat</h3>
-
                 <div class="stat-value" id="bodyFatResult">—</div>
-
                 <div class="stat-desc" id="bodyFatText">
                     Estimasi persentase lemak tubuh.
                 </div>
-
                 <div class="stat-glow"></div>
             </div>
 
             <div class="glass-card stat-card">
                 <div class="stat-icon">🔥</div>
-
                 <h3>Energi Harian</h3>
-
                 <div class="stat-value" id="calorieResult">—</div>
-
                 <div class="stat-desc">
                     Perkiraan kebutuhan energi berdasarkan rumus umum.
                 </div>
-
                 <div class="stat-glow"></div>
             </div>
 
             <div class="glass-card stat-card">
                 <div class="stat-icon">💧</div>
-
                 <h3>Cairan</h3>
-
                 <div class="stat-value" id="waterResult">—</div>
-
                 <div class="stat-desc">
                     Perkiraan kebutuhan cairan harian.
                 </div>
-
                 <div class="stat-glow"></div>
             </div>
 
@@ -1496,7 +1511,8 @@ Silakan ceritakan apa yang ingin kamu ketahui.</div>
                         autocomplete="off"
                     >
 
-                    <button class="send-btn"
+                    <button
+                        class="send-btn"
                         onclick="sendMessage()"
                         aria-label="Kirim pesan">
                         ➤
@@ -1556,7 +1572,6 @@ function calculateHealth() {
     }
 
     const heightMeter = height / 100;
-
     const bmi = weight / (heightMeter * heightMeter);
 
     let bodyFat;
@@ -1696,6 +1711,7 @@ function generateAnalysis(
     exerciseList.innerHTML = "";
     actionList.innerHTML = "";
 
+
     if (age < 18) {
 
         document.getElementById("bmiText").textContent =
@@ -1807,6 +1823,7 @@ function generateAnalysis(
                 "Aktivitasmu cukup tinggi. Pastikan makan, cairan, dan waktu istirahat tetap mencukupi.";
         }
 
+
         exerciseAnalysis.textContent =
             "Pilih aktivitas yang kamu sukai agar lebih mudah dilakukan secara konsisten.";
 
@@ -1829,6 +1846,7 @@ function generateAnalysis(
             exerciseList,
             "Mulai secara bertahap dan berikan waktu istirahat."
         );
+
 
         actionAnalysis.textContent =
             "Fokus utama bukan mengejar angka berat badan tertentu, tetapi membangun kebiasaan sehat.";
@@ -1855,6 +1873,7 @@ function generateAnalysis(
 
         return;
     }
+
 
     let category;
 
@@ -1973,6 +1992,7 @@ function generateAnalysis(
 
     weightStatus.textContent = category;
 
+
     if (activity === "sedentary") {
 
         activityStatus.textContent =
@@ -2013,6 +2033,7 @@ function generateAnalysis(
         activityAnalysis.textContent =
             "Aktivitasmu sangat tinggi. Perhatikan pemulihan, cairan, dan kecukupan makanan.";
     }
+
 
     exerciseAnalysis.textContent =
         "Pilih olahraga sesuai kemampuan dan tingkat aktivitasmu.";
@@ -2069,6 +2090,7 @@ function generateAnalysis(
         );
     }
 
+
     actionAnalysis.textContent =
         "Berdasarkan data yang kamu masukkan, fokus terbaik adalah memperbaiki kebiasaan secara bertahap.";
 
@@ -2112,6 +2134,123 @@ function addListItem(list, text) {
 
 
 /* =========================
+   FORMAT JAWABAN AI
+========================= */
+
+function formatAIMessage(text) {
+
+    let clean = text
+        .replace(/\r/g, "")
+        .replace(/\*\*(.*?)\*\*/g, "$1")
+        .replace(/__(.*?)__/g, "$1")
+        .trim();
+
+    const lines = clean.split("\n");
+
+    let html = "";
+    let paragraph = [];
+    let listMode = null;
+
+    function closeParagraph() {
+
+        if (paragraph.length > 0) {
+
+            html +=
+                `<p>${escapeHTML(paragraph.join(" "))}</p>`;
+
+            paragraph = [];
+        }
+    }
+
+    function closeList() {
+
+        if (listMode) {
+
+            html +=
+                listMode === "ol"
+                    ? "</ol>"
+                    : "</ul>";
+
+            listMode = null;
+        }
+    }
+
+    for (const rawLine of lines) {
+
+        const line = rawLine.trim();
+
+        if (!line) {
+            closeParagraph();
+            closeList();
+            continue;
+        }
+
+        const numbered =
+            line.match(/^(\d+)[.)]\s+(.*)$/);
+
+        const bullet =
+            line.match(/^[-•]\s+(.*)$/);
+
+        if (numbered) {
+
+            closeParagraph();
+
+            if (listMode !== "ol") {
+                closeList();
+                html += "<ol>";
+                listMode = "ol";
+            }
+
+            html +=
+                `<li>${escapeHTML(numbered[2])}</li>`;
+
+            continue;
+        }
+
+        if (bullet) {
+
+            closeParagraph();
+
+            if (listMode !== "ul") {
+                closeList();
+                html += "<ul>";
+                listMode = "ul";
+            }
+
+            html +=
+                `<li>${escapeHTML(bullet[1])}</li>`;
+
+            continue;
+        }
+
+        closeList();
+
+        paragraph.push(line);
+    }
+
+    closeParagraph();
+    closeList();
+
+    return html || escapeHTML(clean);
+}
+
+
+/* =========================
+   ESCAPE HTML
+========================= */
+
+function escapeHTML(text) {
+
+    const div =
+        document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+}
+
+
+/* =========================
    CHAT AI
 ========================= */
 
@@ -2126,7 +2265,16 @@ function addMessage(text, type) {
     message.className =
         "message " + type;
 
-    message.textContent = text;
+    if (type === "ai") {
+
+        message.innerHTML =
+            formatAIMessage(text);
+
+    } else {
+
+        message.textContent =
+            text;
+    }
 
     chatBox.appendChild(message);
 
@@ -2137,7 +2285,8 @@ function addMessage(text, type) {
 
 function askQuick(text) {
 
-    document.getElementById("chatInput").value = text;
+    document.getElementById("chatInput").value =
+        text;
 
     sendMessage();
 }
@@ -2158,7 +2307,10 @@ async function sendMessage() {
         return;
     }
 
-    addMessage(message, "user");
+    addMessage(
+        message,
+        "user"
+    );
 
     input.value = "";
 
@@ -2173,19 +2325,24 @@ async function sendMessage() {
     try {
 
         const response =
-            await fetch("/api/chat", {
-                method: "POST",
+            await fetch(
+                "/api/chat",
+                {
+                    method: "POST",
 
-                headers: {
-                    "Content-Type": "application/json"
-                },
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
 
-                body: JSON.stringify({
-                    message,
-                    healthData,
-                    history: chatHistory.slice(-4)
-                })
-            });
+                    body: JSON.stringify({
+                        message,
+                        healthData,
+                        history:
+                            chatHistory.slice(-4)
+                    })
+                }
+            );
 
         const data =
             await response.json();
@@ -2193,20 +2350,19 @@ async function sendMessage() {
         if (!response.ok) {
 
             throw new Error(
-                data.error || "Terjadi kesalahan."
+                data.error ||
+                "Terjadi kesalahan."
             );
         }
 
-        let reply =
+        const reply =
             data.reply ||
             "Maaf, belum ada jawaban.";
 
-        reply = reply
-            .replace(/\*\*/g, "")
-            .replace(/\*/g, "")
-            .trim();
-
-        addMessage(reply, "ai");
+        addMessage(
+            reply,
+            "ai"
+        );
 
         chatHistory.push({
             role: "assistant",
@@ -2220,7 +2376,10 @@ async function sendMessage() {
             "ai"
         );
 
-        console.error(error);
+        console.error(
+            "Chat Error:",
+            error
+        );
     }
 
     typingText.textContent = "";
@@ -2233,16 +2392,18 @@ async function sendMessage() {
 
 document
     .getElementById("chatInput")
-    .addEventListener("keydown", function(event) {
+    .addEventListener(
+        "keydown",
+        function(event) {
 
-        if (event.key === "Enter") {
+            if (event.key === "Enter") {
 
-            event.preventDefault();
+                event.preventDefault();
 
-            sendMessage();
+                sendMessage();
+            }
         }
-
-    });
+    );
 
 </script>
 
