@@ -1,0 +1,2364 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriCheck — Tubuhmu Punya Cerita</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    :root {
+        --black: #05080d;
+        --black-soft: #0a1018;
+        --blue: #1677ff;
+        --blue-dark: #0d5ed7;
+        --blue-light: #59a4ff;
+        --blue-soft: rgba(22,119,255,0.10);
+        --white: #ffffff;
+        --white-soft: #f5f8fc;
+        --text: #101722;
+        --muted: #657182;
+        --line: #e3eaf3;
+        --glass: rgba(255,255,255,0.78);
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background:
+            radial-gradient(circle at 10% 8%, rgba(22,119,255,0.12), transparent 28%),
+            radial-gradient(circle at 90% 15%, rgba(89,164,255,0.10), transparent 25%),
+            #f7f9fc;
+        color: var(--text);
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+
+    body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background:
+            linear-gradient(rgba(16,23,34,0.025) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(16,23,34,0.025) 1px, transparent 1px);
+        background-size: 52px 52px;
+        z-index: -2;
+    }
+
+    .shape {
+        position: fixed;
+        border-radius: 50%;
+        pointer-events: none;
+        filter: blur(20px);
+        z-index: -1;
+    }
+
+    .shape-one {
+        width: 300px;
+        height: 300px;
+        top: -130px;
+        left: -110px;
+        background: rgba(22,119,255,0.13);
+        animation: floatOne 10s ease-in-out infinite;
+    }
+
+    .shape-two {
+        width: 340px;
+        height: 340px;
+        right: -150px;
+        top: 34%;
+        background: rgba(89,164,255,0.11);
+        animation: floatTwo 12s ease-in-out infinite;
+    }
+
+    .shape-three {
+        width: 260px;
+        height: 260px;
+        left: 40%;
+        bottom: -100px;
+        background: rgba(22,119,255,0.07);
+        animation: floatThree 11s ease-in-out infinite;
+    }
+
+    @keyframes floatOne {
+        0%,100% { transform: translate(0,0); }
+        50% { transform: translate(45px,35px); }
+    }
+
+    @keyframes floatTwo {
+        0%,100% { transform: translate(0,0); }
+        50% { transform: translate(-40px,-30px); }
+    }
+
+    @keyframes floatThree {
+        0%,100% { transform: translate(0,0); }
+        50% { transform: translate(25px,-35px); }
+    }
+
+    .container {
+        width: min(1180px, calc(100% - 40px));
+        margin: auto;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    button {
+        font: inherit;
+        border: none;
+        cursor: pointer;
+    }
+
+    .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        padding: 17px 0;
+        background: rgba(255,255,255,0.78);
+        backdrop-filter: blur(18px);
+        border-bottom: 1px solid rgba(16,23,34,0.07);
+    }
+
+    .nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .brand-mark {
+        width: 44px;
+        height: 44px;
+        border-radius: 13px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, var(--black), var(--blue-dark));
+        box-shadow: 0 10px 28px rgba(22,119,255,0.20);
+    }
+
+    .brand-mark svg {
+        width: 23px;
+        height: 23px;
+        stroke: #fff;
+    }
+
+    .brand-text strong {
+        display: block;
+        font-size: 17px;
+    }
+
+    .brand-text span {
+        display: block;
+        margin-top: 3px;
+        color: #8290a2;
+        font-size: 9px;
+        letter-spacing: 1.4px;
+    }
+
+    .nav-pill {
+        padding: 8px 12px;
+        color: #536073;
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1.4px;
+    }
+
+    .hero {
+        padding: 94px 0 82px;
+    }
+
+    .hero-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        align-items: center;
+        gap: 60px;
+    }
+
+    .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: var(--blue-soft);
+        color: var(--blue-dark);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1.7px;
+    }
+
+    .eyebrow-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--blue);
+    }
+
+    .hero h1 {
+        max-width: 770px;
+        margin-top: 21px;
+        font-size: clamp(50px, 7vw, 88px);
+        line-height: 0.98;
+        letter-spacing: -4px;
+        color: var(--black);
+    }
+
+    .hero h1 span {
+        display: block;
+        color: var(--blue);
+    }
+
+    .hero p {
+        max-width: 650px;
+        margin-top: 25px;
+        color: #5e6a7c;
+        font-size: 17px;
+        line-height: 1.8;
+    }
+
+    .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 31px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        padding: 14px 18px;
+        border-radius: 13px;
+        transition: 0.22s ease;
+    }
+
+    .btn-primary {
+        color: #fff;
+        background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+        box-shadow: 0 13px 30px rgba(22,119,255,0.22);
+    }
+
+    .btn-secondary {
+        color: var(--text);
+        background: #fff;
+        border: 1px solid var(--line);
+    }
+
+    .btn-primary:hover,
+    .btn-secondary:hover {
+        transform: translateY(-2px);
+    }
+
+    .hero-note {
+        margin-top: 18px;
+        color: #8b96a5;
+        font-size: 11px;
+    }
+
+    .hero-card {
+        min-height: 385px;
+        position: relative;
+        overflow: hidden;
+        padding: 24px;
+        border-radius: 28px;
+        background: linear-gradient(145deg, #08111d, #0e1824);
+        box-shadow:
+            0 30px 70px rgba(0,0,0,0.18),
+            inset 0 1px 0 rgba(255,255,255,0.06);
+    }
+
+    .hero-card-title {
+        position: relative;
+        z-index: 4;
+        color: #8ea4bf;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1.7px;
+    }
+
+    .hero-orb {
+        position: absolute;
+        top: 51%;
+        left: 50%;
+        width: 180px;
+        height: 180px;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        background:
+            radial-gradient(circle at 34% 30%, #fff 0 6%, transparent 7%),
+            radial-gradient(circle at 38% 35%, #6eb4ff, transparent 37%),
+            radial-gradient(circle at 65% 65%, #126eff, transparent 58%);
+        box-shadow:
+            0 0 50px rgba(22,119,255,0.30),
+            0 0 100px rgba(22,119,255,0.10);
+        animation: orbPulse 5s ease-in-out infinite;
+    }
+
+    @keyframes orbPulse {
+        0%,100% {
+            transform: translate(-50%,-50%) scale(1);
+        }
+        50% {
+            transform: translate(-50%,-50%) scale(1.05);
+        }
+    }
+
+    .floating-card {
+        position: absolute;
+        z-index: 5;
+        min-width: 125px;
+        padding: 13px 15px;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 16px;
+        background: rgba(255,255,255,0.07);
+        backdrop-filter: blur(15px);
+    }
+
+    .floating-card strong {
+        display: block;
+        color: #fff;
+        font-size: 18px;
+        margin-bottom: 3px;
+    }
+
+    .floating-card span {
+        color: #93a1b1;
+        font-size: 10px;
+    }
+
+    .fc-one {
+        left: 22px;
+        top: 86px;
+    }
+
+    .fc-two {
+        right: 21px;
+        top: 185px;
+    }
+
+    .fc-three {
+        left: 40px;
+        bottom: 38px;
+    }
+
+    section {
+        padding: 72px 0;
+    }
+
+    .section-head {
+        margin-bottom: 28px;
+    }
+
+    .section-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--blue-dark);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1.8px;
+        margin-bottom: 10px;
+    }
+
+    .section-tag::before {
+        content: "";
+        width: 22px;
+        height: 2px;
+        border-radius: 999px;
+        background: var(--blue);
+    }
+
+    .section-head h2 {
+        color: var(--black);
+        font-size: clamp(31px, 4vw, 45px);
+        letter-spacing: -1.8px;
+        line-height: 1.05;
+    }
+
+    .section-head p {
+        max-width: 700px;
+        margin-top: 11px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.75;
+    }
+
+    .glass-card {
+        background: var(--glass);
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(222,230,241,0.85);
+        border-radius: 23px;
+        box-shadow: 0 18px 48px rgba(8,17,29,0.06);
+    }
+
+    .form-card {
+        padding: 27px;
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap: 18px;
+    }
+
+    .field {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .field label {
+        color: #3d4858;
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    .field input,
+    .field select {
+        width: 100%;
+        padding: 13px 14px;
+        color: #17202d;
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 13px;
+        outline: none;
+    }
+
+    .field input:focus,
+    .field select:focus {
+        border-color: rgba(22,119,255,0.6);
+        box-shadow: 0 0 0 3px rgba(22,119,255,0.08);
+    }
+
+    .form-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-top: 23px;
+    }
+
+    .form-info {
+        max-width: 590px;
+        color: #8791a0;
+        font-size: 11px;
+        line-height: 1.6;
+    }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        gap: 15px;
+    }
+
+    .stat-card {
+        position: relative;
+        overflow: hidden;
+        padding: 21px;
+    }
+
+    .stat-icon {
+        width: 43px;
+        height: 43px;
+        display: grid;
+        place-items: center;
+        margin-bottom: 17px;
+        border-radius: 12px;
+        background: var(--blue-soft);
+        color: var(--blue-dark);
+        font-size: 20px;
+    }
+
+    .stat-card h3 {
+        color: #778394;
+        font-size: 10px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+    .stat-value {
+        margin-top: 7px;
+        color: var(--black);
+        font-size: 27px;
+        font-weight: 700;
+        line-height: 1.1;
+    }
+
+    .stat-desc {
+        margin-top: 8px;
+        color: #8791a0;
+        font-size: 11px;
+        line-height: 1.55;
+    }
+
+    .stat-glow {
+        position: absolute;
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        right: -38px;
+        bottom: -44px;
+        background: rgba(22,119,255,0.09);
+    }
+
+    /* PERSONAL ANALYSIS */
+
+    .analysis-grid {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap: 16px;
+    }
+
+    .analysis-card {
+        padding: 24px;
+    }
+
+    .analysis-card.full {
+        grid-column: 1 / -1;
+    }
+
+    .analysis-title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 15px;
+    }
+
+    .analysis-icon {
+        width: 45px;
+        height: 45px;
+        display: grid;
+        place-items: center;
+        flex: 0 0 45px;
+        border-radius: 13px;
+        background: #eef5ff;
+        border: 1px solid #dceaff;
+        font-size: 21px;
+    }
+
+    .analysis-title h3 {
+        color: var(--black);
+        font-size: 18px;
+    }
+
+    .analysis-title span {
+        display: block;
+        margin-top: 3px;
+        color: #8994a3;
+        font-size: 10px;
+    }
+
+    .analysis-card p {
+        color: #657182;
+        font-size: 13px;
+        line-height: 1.75;
+    }
+
+    .analysis-list {
+        margin-top: 13px;
+        padding-left: 20px;
+        color: #657182;
+    }
+
+    .analysis-list li {
+        margin-bottom: 8px;
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    .status-badge {
+        display: inline-flex;
+        padding: 7px 11px;
+        margin-top: 3px;
+        border-radius: 999px;
+        background: var(--blue-soft);
+        color: var(--blue-dark);
+        font-size: 11px;
+        font-weight: 700;
+    }
+
+    .warning-box {
+        margin-top: 15px;
+        padding: 13px 15px;
+        border-radius: 13px;
+        background: #f7f9fc;
+        border: 1px solid var(--line);
+        color: #6d7888;
+        font-size: 11px;
+        line-height: 1.65;
+    }
+
+    .insight-grid {
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 16px;
+    }
+
+    .insight-card {
+        padding: 22px;
+    }
+
+    .icon-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 18px;
+    }
+
+    .icon-box {
+        width: 46px;
+        height: 46px;
+        display: grid;
+        place-items: center;
+        border-radius: 13px;
+        background: #eef5ff;
+        border: 1px solid #dceaff;
+        font-size: 20px;
+    }
+
+    .number {
+        color: #b0bac6;
+        font-size: 11px;
+        font-weight: 700;
+    }
+
+    .insight-card h3 {
+        margin-bottom: 8px;
+        font-size: 18px;
+        color: var(--black);
+    }
+
+    .insight-card p {
+        color: #697587;
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+    .ai-layout {
+        display: grid;
+        grid-template-columns: 0.90fr 1.10fr;
+        gap: 20px;
+    }
+
+    .ai-info,
+    .chat-card {
+        padding: 24px;
+    }
+
+    .ai-title {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        margin-bottom: 18px;
+    }
+
+    .ai-avatar {
+        width: 50px;
+        height: 50px;
+        display: grid;
+        place-items: center;
+        border-radius: 15px;
+        background: linear-gradient(135deg, var(--black), var(--blue));
+        box-shadow: 0 12px 28px rgba(22,119,255,0.18);
+        font-size: 24px;
+    }
+
+    .ai-title h3 {
+        color: var(--black);
+        font-size: 22px;
+    }
+
+    .ai-title span {
+        display: block;
+        margin-top: 3px;
+        color: #8c97a6;
+        font-size: 10px;
+    }
+
+    .ai-info > p {
+        color: #697587;
+        font-size: 13px;
+        line-height: 1.75;
+    }
+
+    .quick-grid {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap: 10px;
+        margin-top: 22px;
+    }
+
+    .quick-btn {
+        text-align: left;
+        padding: 14px;
+        color: #253142;
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        transition: 0.2s ease;
+    }
+
+    .quick-btn:hover {
+        transform: translateY(-2px);
+        border-color: #c9ddf7;
+        box-shadow: 0 9px 22px rgba(22,119,255,0.06);
+    }
+
+    .quick-icon {
+        font-size: 20px;
+        margin-bottom: 8px;
+    }
+
+    .quick-btn strong {
+        display: block;
+        margin-bottom: 4px;
+        font-size: 12px;
+    }
+
+    .quick-btn span {
+        display: block;
+        color: #8a94a2;
+        font-size: 10px;
+        line-height: 1.45;
+    }
+
+    .chat-card {
+        min-height: 480px;
+        display: flex;
+        flex-direction: column;
+        background: #0a1018;
+        border-color: rgba(255,255,255,0.06);
+    }
+
+    .chat-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 13px;
+    }
+
+    .chat-label {
+        color: #dce7f3;
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    .online-dot {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: #8ea0b4;
+        font-size: 10px;
+    }
+
+    .online-dot::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #41d18c;
+    }
+
+    .chat-box {
+        flex: 1;
+        min-height: 305px;
+        padding: 14px;
+        overflow-y: auto;
+        background: #070c12;
+        border: 1px solid rgba(255,255,255,0.05);
+        border-radius: 17px;
+    }
+
+    .message {
+        max-width: 86%;
+        padding: 12px 14px;
+        margin-bottom: 10px;
+        border-radius: 14px;
+        font-size: 12px;
+        line-height: 1.65;
+        white-space: pre-wrap;
+    }
+
+    .message.ai {
+        color: #d9e2ed;
+        background: #121a25;
+        border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .message.user {
+        margin-left: auto;
+        color: #fff;
+        background: linear-gradient(135deg, var(--blue), #0d5ed7);
+    }
+
+    .typing {
+        min-height: 17px;
+        margin-top: 8px;
+        color: #8494a8;
+        font-size: 10px;
+    }
+
+    .chat-form {
+        display: flex;
+        gap: 9px;
+        margin-top: 9px;
+    }
+
+    .chat-input {
+        flex: 1;
+        min-width: 0;
+        padding: 13px 14px;
+        color: #fff;
+        background: #111924;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 13px;
+        outline: none;
+    }
+
+    .chat-input::placeholder {
+        color: #718093;
+    }
+
+    .send-btn {
+        width: 48px;
+        flex: 0 0 48px;
+        display: grid;
+        place-items: center;
+        border-radius: 13px;
+        background: var(--blue);
+        color: #fff;
+        font-size: 18px;
+    }
+
+    footer {
+        margin-top: 28px;
+        padding: 48px 0 32px;
+        background: var(--black);
+    }
+
+    .footer-inner {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 30px;
+        flex-wrap: wrap;
+    }
+
+    .footer-title {
+        color: #fff;
+        font-size: 17px;
+        font-weight: 700;
+    }
+
+    .footer-text {
+        max-width: 560px;
+        margin-top: 7px;
+        color: #7e8da1;
+        font-size: 11px;
+        line-height: 1.7;
+    }
+
+    .footer-small {
+        color: #526176;
+        font-size: 10px;
+    }
+
+    @media (max-width: 980px) {
+        .hero-grid,
+        .ai-layout {
+            grid-template-columns: 1fr;
+        }
+
+        .stats-grid {
+            grid-template-columns: repeat(2,1fr);
+        }
+
+        .insight-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 700px) {
+        .container {
+            width: min(100% - 24px, 1180px);
+        }
+
+        .hero {
+            padding: 62px 0 48px;
+        }
+
+        .hero h1 {
+            font-size: clamp(43px, 13vw, 65px);
+            letter-spacing: -2.8px;
+        }
+
+        .hero p {
+            font-size: 14px;
+        }
+
+        .form-grid,
+        .stats-grid,
+        .quick-grid,
+        .analysis-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .analysis-card.full {
+            grid-column: auto;
+        }
+
+        .nav-pill {
+            display: none;
+        }
+
+        section {
+            padding: 50px 0;
+        }
+
+        .hero-card {
+            min-height: 300px;
+        }
+
+        .hero-orb {
+            width: 145px;
+            height: 145px;
+        }
+    }
+</style>
+
+</head>
+
+<body>
+
+<div class="shape shape-one"></div>
+<div class="shape shape-two"></div>
+<div class="shape shape-three"></div>
+
+<nav class="navbar">
+    <div class="container nav-inner">
+        <a href="#" class="brand">
+            <div class="brand-mark">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 3v18"></path>
+                    <path d="M3 12h18"></path>
+                </svg>
+            </div>
+
+        <div class="brand-text">
+            <strong>NutriCheck</strong>
+            <span>KESEHATAN • NUTRISI • AI</span>
+        </div>
+    </a>
+
+    <div class="nav-pill">
+        PAHAMI TUBUHMU
+    </div>
+</div>
+
+</nav>
+
+<header class="hero">
+    <div class="container hero-grid">
+
+    <div>
+        <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            PERSONAL HEALTH TECHNOLOGY
+        </div>
+
+        <h1>
+            Tubuhmu
+            <span>punya cerita.</span>
+        </h1>
+
+        <p>
+            NutriCheck membantu memberikan gambaran mengenai berat badan,
+            komposisi tubuh, aktivitas, kebutuhan harian, serta kebiasaan
+            yang dapat diperbaiki secara bertahap.
+        </p>
+
+        <div class="hero-actions">
+            <a href="#data" class="btn-primary">
+                🚀 Mulai Cek Kesehatan
+            </a>
+
+            <a href="#ai" class="btn-secondary">
+                🤖 Tanya NutriCheck AI
+            </a>
+        </div>
+
+        <div class="hero-note">
+            📊 Data • 🍎 Nutrisi • 🏃 Aktivitas • 😴 Istirahat
+        </div>
+    </div>
+
+    <div class="hero-card">
+        <div class="hero-card-title">
+            📈 GAMBARAN KESEHATAN HARIAN
+        </div>
+
+        <div class="hero-orb"></div>
+
+        <div class="floating-card fc-one">
+            <strong>Body</strong>
+            <span>Health insight</span>
+        </div>
+
+        <div class="floating-card fc-two">
+            <strong>AI</strong>
+            <span>Personal analysis</span>
+        </div>
+
+        <div class="floating-card fc-three">
+            <strong>Daily</strong>
+            <span>Healthy habits</span>
+        </div>
+    </div>
+
+</div>
+
+</header>
+
+<section id="data">
+    <div class="container">
+
+    <div class="section-head">
+        <div class="section-tag">DATA PENGGUNA</div>
+
+        <h2>Mulai dari mengenal dirimu. 👋</h2>
+
+        <p>
+            Masukkan data dasar untuk mendapatkan gambaran awal mengenai
+            tubuh, aktivitas, dan kebiasaan yang dapat diperhatikan.
+        </p>
+    </div>
+
+    <div class="glass-card form-card">
+
+        <div class="form-grid">
+
+            <div class="field">
+                <label for="age">🎂 Usia</label>
+                <input id="age" type="number" min="1" max="100"
+                    placeholder="Contoh: 17">
+            </div>
+
+            <div class="field">
+                <label for="gender">👤 Jenis Kelamin</label>
+                <select id="gender">
+                    <option value="">Pilih jenis kelamin</option>
+                    <option value="male">Laki-laki</option>
+                    <option value="female">Perempuan</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label for="height">📏 Tinggi Badan (cm)</label>
+                <input id="height" type="number" min="50" max="250"
+                    placeholder="Contoh: 175">
+            </div>
+
+            <div class="field">
+                <label for="weight">⚖️ Berat Badan (kg)</label>
+                <input id="weight" type="number" min="10" max="300"
+                    placeholder="Contoh: 70">
+            </div>
+
+            <div class="field">
+                <label for="activity">🏃 Aktivitas Harian</label>
+                <select id="activity">
+                    <option value="">Pilih tingkat aktivitas</option>
+                    <option value="sedentary">Jarang bergerak</option>
+                    <option value="light">Aktivitas ringan</option>
+                    <option value="moderate">Cukup aktif</option>
+                    <option value="active">Aktif</option>
+                    <option value="very_active">Sangat aktif</option>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="form-footer">
+
+            <div class="form-info">
+                ℹ️ Hasil merupakan perkiraan berdasarkan rumus umum.
+                Untuk usia di bawah 18 tahun, BMI dan body fat tidak
+                digunakan sebagai diagnosis dan sebaiknya dinilai bersama
+                pertumbuhan berdasarkan usia dan jenis kelamin.
+            </div>
+
+            <button class="btn-primary" onclick="calculateHealth()">
+                🔎 Tampilkan Hasil
+            </button>
+
+        </div>
+    </div>
+
+</div>
+
+</section>
+
+<section id="results">
+    <div class="container">
+
+    <div class="section-head">
+        <div class="section-tag">HASIL PERHITUNGAN</div>
+
+        <h2>Gambaran kesehatanmu. 📊</h2>
+
+        <p>
+            Hasil ini merupakan titik awal untuk memahami tubuhmu,
+            bukan untuk menghakimi atau menentukan kondisi medis.
+        </p>
+    </div>
+
+    <div class="stats-grid">
+
+        <div class="glass-card stat-card">
+            <div class="stat-icon">⚖️</div>
+
+            <h3>BMI</h3>
+
+            <div class="stat-value" id="bmiResult">—</div>
+
+            <div class="stat-desc" id="bmiText">
+                Masukkan data untuk melihat hasil.
+            </div>
+
+            <div class="stat-glow"></div>
+        </div>
+
+        <div class="glass-card stat-card">
+            <div class="stat-icon">📊</div>
+
+            <h3>Body Fat</h3>
+
+            <div class="stat-value" id="bodyFatResult">—</div>
+
+            <div class="stat-desc" id="bodyFatText">
+                Estimasi persentase lemak tubuh.
+            </div>
+
+            <div class="stat-glow"></div>
+        </div>
+
+        <div class="glass-card stat-card">
+            <div class="stat-icon">🔥</div>
+
+            <h3>Energi Harian</h3>
+
+            <div class="stat-value" id="calorieResult">—</div>
+
+            <div class="stat-desc">
+                Perkiraan kebutuhan energi berdasarkan rumus umum.
+            </div>
+
+            <div class="stat-glow"></div>
+        </div>
+
+        <div class="glass-card stat-card">
+            <div class="stat-icon">💧</div>
+
+            <h3>Cairan</h3>
+
+            <div class="stat-value" id="waterResult">—</div>
+
+            <div class="stat-desc">
+                Perkiraan kebutuhan cairan harian.
+            </div>
+
+            <div class="stat-glow"></div>
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- PERSONAL ANALYSIS -->
+
+<section id="personalAnalysis">
+    <div class="container">
+
+    <div class="section-head">
+        <div class="section-tag">ANALISIS PERSONAL</div>
+
+        <h2>Jadi, tubuhmu perlu apa? 💡</h2>
+
+        <p>
+            NutriCheck mengubah data yang kamu masukkan menjadi penjelasan
+            sederhana mengenai hal yang perlu diperhatikan dan langkah
+            yang bisa dilakukan.
+        </p>
+    </div>
+
+    <div class="analysis-grid">
+
+        <div class="glass-card analysis-card">
+
+            <div class="analysis-title">
+                <div class="analysis-icon">⚖️</div>
+
+                <div>
+                    <h3>Kondisi Berat Badan</h3>
+                    <span>Perbandingan BB dan TB</span>
+                </div>
+            </div>
+
+            <div class="status-badge" id="weightStatus">
+                Belum dianalisis
+            </div>
+
+            <p id="weightAnalysis" style="margin-top:13px;">
+                Masukkan data terlebih dahulu.
+            </p>
+
+        </div>
+
+        <div class="glass-card analysis-card">
+
+            <div class="analysis-title">
+                <div class="analysis-icon">🏃</div>
+
+                <div>
+                    <h3>Aktivitas</h3>
+                    <span>Kebiasaan bergerak</span>
+                </div>
+            </div>
+
+            <div class="status-badge" id="activityStatus">
+                Belum dianalisis
+            </div>
+
+            <p id="activityAnalysis" style="margin-top:13px;">
+                Masukkan data terlebih dahulu.
+            </p>
+
+        </div>
+
+        <div class="glass-card analysis-card">
+
+            <div class="analysis-title">
+                <div class="analysis-icon">🍽️</div>
+
+                <div>
+                    <h3>Asupan & Nutrisi</h3>
+                    <span>Hal yang perlu diperhatikan</span>
+                </div>
+            </div>
+
+            <p id="nutritionAnalysis">
+                Masukkan data untuk mendapatkan saran nutrisi.
+            </p>
+
+            <ul class="analysis-list" id="nutritionList"></ul>
+
+        </div>
+
+        <div class="glass-card analysis-card">
+
+            <div class="analysis-title">
+                <div class="analysis-icon">💪</div>
+
+                <div>
+                    <h3>Olahraga yang Sesuai</h3>
+                    <span>Rekomendasi berdasarkan aktivitas</span>
+                </div>
+            </div>
+
+            <p id="exerciseAnalysis">
+                Masukkan data untuk mendapatkan rekomendasi olahraga.
+            </p>
+
+            <ul class="analysis-list" id="exerciseList"></ul>
+
+        </div>
+
+        <div class="glass-card analysis-card full">
+
+            <div class="analysis-title">
+                <div class="analysis-icon">🎯</div>
+
+                <div>
+                    <h3>Yang Sebaiknya Dilakukan</h3>
+                    <span>Langkah sederhana berdasarkan data kamu</span>
+                </div>
+            </div>
+
+            <p id="actionAnalysis">
+                Setelah data dianalisis, NutriCheck akan memberikan
+                langkah yang lebih sesuai dengan kondisi yang dimasukkan.
+            </p>
+
+            <ul class="analysis-list" id="actionList"></ul>
+
+            <div class="warning-box" id="healthNote">
+                ℹ️ Hasil akan muncul setelah data lengkap dimasukkan.
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+<section>
+    <div class="container">
+
+    <div class="section-head">
+        <div class="section-tag">INSIGHT</div>
+
+        <h2>Bukan cuma angka. 💡</h2>
+
+        <p>
+            Kesehatan tidak ditentukan oleh satu angka saja. Pola makan,
+            aktivitas, tidur, pertumbuhan, dan kebiasaan sehari-hari
+            juga perlu diperhatikan.
+        </p>
+    </div>
+
+    <div class="insight-grid">
+
+        <div class="glass-card insight-card">
+            <div class="icon-row">
+                <div class="icon-box">📈</div>
+                <span class="number">01</span>
+            </div>
+
+            <h3>📊 Pahami datanya</h3>
+
+            <p>
+                BMI dan body fat hanyalah alat bantu untuk mendapatkan
+                gambaran awal, bukan penentu nilai kesehatan seseorang.
+            </p>
+        </div>
+
+        <div class="glass-card insight-card">
+            <div class="icon-row">
+                <div class="icon-box">🌱</div>
+                <span class="number">02</span>
+            </div>
+
+            <h3>🌱 Mulai perlahan</h3>
+
+            <p>
+                Perubahan kebiasaan dapat dilakukan sedikit demi sedikit
+                melalui makan teratur, aktivitas, dan tidur yang cukup.
+            </p>
+        </div>
+
+        <div class="glass-card insight-card">
+            <div class="icon-row">
+                <div class="icon-box">⚖️</div>
+                <span class="number">03</span>
+            </div>
+
+            <h3>⚖️ Jaga keseimbangan</h3>
+
+            <p>
+                Tujuan utama bukan mengejar angka tertentu, tetapi
+                membangun kebiasaan sehat yang dapat dipertahankan.
+            </p>
+        </div>
+
+    </div>
+</div>
+
+</section>
+
+<section id="ai">
+    <div class="container">
+
+    <div class="section-head">
+        <div class="section-tag">AI ASSISTANT</div>
+
+        <h2>Ada yang ingin kamu tanyakan? 🤖</h2>
+
+        <p>
+            Tanyakan tentang nutrisi, aktivitas, tidur, olahraga,
+            atau hasil analisis yang muncul di halaman ini.
+        </p>
+    </div>
+
+    <div class="ai-layout">
+
+        <div class="glass-card ai-info">
+
+            <div class="ai-title">
+
+                <div class="ai-avatar">
+                    🤖
+                </div>
+
+                <div>
+                    <h3>NutriCheck AI</h3>
+                    <span>Teman digital untuk memahami kesehatan</span>
+                </div>
+
+            </div>
+
+            <p>
+                Tulis pertanyaan menggunakan bahasa sehari-hari.
+                NutriCheck AI akan membantu memberikan penjelasan
+                yang sederhana dan mudah dipahami.
+            </p>
+
+            <div class="quick-grid">
+
+                <button class="quick-btn"
+                    onclick="askQuick('Apa makanan yang cocok setelah olahraga?')">
+                    <div class="quick-icon">🍎</div>
+                    <strong>Ide makanan</strong>
+                    <span>Pilihan makanan untuk sehari-hari.</span>
+                </button>
+
+                <button class="quick-btn"
+                    onclick="askQuick('Bagaimana cara menjaga pola makan yang seimbang?')">
+                    <div class="quick-icon">🥗</div>
+                    <strong>Pola makan</strong>
+                    <span>Memahami pola makan seimbang.</span>
+                </button>
+
+                <button class="quick-btn"
+                    onclick="askQuick('Apa manfaat tidur yang cukup bagi tubuh?')">
+                    <div class="quick-icon">😴</div>
+                    <strong>Tentang tidur</strong>
+                    <span>Peran istirahat bagi tubuh.</span>
+                </button>
+
+                <button class="quick-btn"
+                    onclick="askQuick('Bagaimana cara mulai olahraga secara rutin?')">
+                    <div class="quick-icon">🏃</div>
+                    <strong>Mulai bergerak</strong>
+                    <span>Cara mulai aktivitas secara bertahap.</span>
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="glass-card chat-card">
+
+            <div class="chat-top">
+                <div class="chat-label">
+                    💬 Percakapan dengan AI
+                </div>
+
+                <div class="online-dot">
+                    Siap membantu
+                </div>
+            </div>
+
+            <div class="chat-box" id="chatBox">
+
+                <div class="message ai">
+                    Halo! 👋 Saya NutriCheck AI.
+
+                    Saya bisa membantu menjelaskan nutrisi,
+                    aktivitas fisik, tidur, olahraga, dan hasil
+                    analisis kesehatanmu.
+
+                    Silakan ceritakan apa yang ingin kamu ketahui.
+                </div>
+
+            </div>
+
+            <div class="typing" id="typingText"></div>
+
+            <div class="chat-form">
+
+                <input
+                    id="chatInput"
+                    class="chat-input"
+                    type="text"
+                    placeholder="Tulis pertanyaanmu di sini..."
+                    autocomplete="off"
+                >
+
+                <button class="send-btn"
+                    onclick="sendMessage()"
+                    aria-label="Kirim pesan">
+                    ➤
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+</section>
+
+<footer>
+    <div class="container footer-inner">
+
+    <div>
+        <div class="footer-title">
+            NutriCheck 🔵
+        </div>
+
+        <div class="footer-text">
+            Teman digital untuk membantu memahami kesehatan,
+            nutrisi, aktivitas, dan kebiasaan sehari-hari dengan
+            cara yang sederhana dan informatif.
+        </div>
+    </div>
+
+    <div class="footer-small">
+        NutriCheck AI • Personal Health Experience
+    </div>
+
+</div>
+
+</footer>
+
+<script>
+
+let healthData = {};
+let chatHistory = [];
+
+
+/* =========================
+   HITUNG KESEHATAN
+========================= */
+
+function calculateHealth() {
+
+    const age = Number(document.getElementById("age").value);
+    const gender = document.getElementById("gender").value;
+    const height = Number(document.getElementById("height").value);
+    const weight = Number(document.getElementById("weight").value);
+    const activity = document.getElementById("activity").value;
+
+    if (!age || !gender || !height || !weight || !activity) {
+        alert("⚠️ Lengkapi semua data terlebih dahulu.");
+        return;
+    }
+
+    const heightMeter = height / 100;
+
+    const bmi = weight / (heightMeter * heightMeter);
+
+    /*
+       Rumus body fat Deurenberg.
+       Untuk usia <18 hasil hanya estimasi kasar.
+    */
+
+    let bodyFat;
+
+    if (gender === "male") {
+        bodyFat =
+            (1.20 * bmi) +
+            (0.23 * age) -
+            16.2;
+    } else {
+        bodyFat =
+            (1.20 * bmi) +
+            (0.23 * age) -
+            5.4;
+    }
+
+    bodyFat = Math.max(0, bodyFat);
+
+
+    /*
+       Kalori:
+       Hanya estimasi rumus umum.
+    */
+
+    let bmr;
+
+    if (gender === "male") {
+        bmr =
+            (10 * weight) +
+            (6.25 * height) -
+            (5 * age) +
+            5;
+    } else {
+        bmr =
+            (10 * weight) +
+            (6.25 * height) -
+            (5 * age) -
+            161;
+    }
+
+    const activityMultiplier = {
+        sedentary: 1.2,
+        light: 1.375,
+        moderate: 1.55,
+        active: 1.725,
+        very_active: 1.9
+    };
+
+    const calorie = Math.round(
+        bmr * activityMultiplier[activity]
+    );
+
+
+    /*
+       Cairan sebagai perkiraan sederhana.
+    */
+
+    const water = (weight * 35) / 1000;
+
+
+    const activityNames = {
+        sedentary: "Jarang bergerak",
+        light: "Aktivitas ringan",
+        moderate: "Cukup aktif",
+        active: "Aktif",
+        very_active: "Sangat aktif"
+    };
+
+
+    /*
+       Tampilkan angka.
+    */
+
+    document.getElementById("bmiResult").textContent =
+        bmi.toFixed(1);
+
+    document.getElementById("bodyFatResult").textContent =
+        bodyFat.toFixed(1) + "%";
+
+    document.getElementById("calorieResult").textContent =
+        calorie + " kcal";
+
+    document.getElementById("waterResult").textContent =
+        water.toFixed(1) + " L";
+
+
+    /*
+       Simpan data.
+    */
+
+    healthData = {
+        age,
+        gender,
+        height,
+        weight,
+        activity,
+        bmi: Number(bmi.toFixed(1)),
+        bodyFat: Number(bodyFat.toFixed(1)),
+        calorie,
+        water: Number(water.toFixed(1))
+    };
+
+
+    /*
+       Analisis.
+    */
+
+    generateAnalysis(
+        age,
+        gender,
+        height,
+        weight,
+        activity,
+        bmi,
+        bodyFat
+    );
+
+
+    /*
+       Scroll ke hasil.
+    */
+
+    document.getElementById("results").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+
+/* =========================
+   ANALISIS PERSONAL
+========================= */
+
+function generateAnalysis(
+    age,
+    gender,
+    height,
+    weight,
+    activity,
+    bmi,
+    bodyFat
+) {
+
+    const weightStatus =
+        document.getElementById("weightStatus");
+
+    const weightAnalysis =
+        document.getElementById("weightAnalysis");
+
+    const activityStatus =
+        document.getElementById("activityStatus");
+
+    const activityAnalysis =
+        document.getElementById("activityAnalysis");
+
+    const nutritionAnalysis =
+        document.getElementById("nutritionAnalysis");
+
+    const nutritionList =
+        document.getElementById("nutritionList");
+
+    const exerciseAnalysis =
+        document.getElementById("exerciseAnalysis");
+
+    const exerciseList =
+        document.getElementById("exerciseList");
+
+    const actionAnalysis =
+        document.getElementById("actionAnalysis");
+
+    const actionList =
+        document.getElementById("actionList");
+
+    const healthNote =
+        document.getElementById("healthNote");
+
+    nutritionList.innerHTML = "";
+    exerciseList.innerHTML = "";
+    actionList.innerHTML = "";
+
+
+    /*
+       =========================
+       USIA DI BAWAH 18
+       =========================
+    */
+
+    if (age < 18) {
+
+        document.getElementById("bmiText").textContent =
+            "Estimasi BMI; penilaian remaja perlu mempertimbangkan pertumbuhan.";
+
+        document.getElementById("bodyFatText").textContent =
+            "Estimasi kasar dan bukan diagnosis.";
+
+
+        weightStatus.textContent =
+            "Perlu dilihat berdasarkan pertumbuhan";
+
+        weightAnalysis.textContent =
+            "Karena usia kamu masih di bawah 18 tahun, BMI tidak sebaiknya digunakan sendirian untuk menentukan apakah berat badanmu normal, kurang, atau berlebih. Pertumbuhan dan jenis kelamin juga perlu diperhatikan.";
+
+        healthNote.textContent =
+            "ℹ️ Kamu masih dalam masa pertumbuhan. Hasil BMI dan body fat di halaman ini hanya perkiraan. Jangan melakukan diet ketat atau menaikkan/menurunkan berat badan secara ekstrem berdasarkan hasil ini.";
+
+
+        /*
+           Analisis berdasarkan BMI hanya sebagai sinyal,
+           bukan kategori medis.
+        */
+
+        if (bmi < 18.5) {
+
+            nutritionAnalysis.textContent =
+                "Berat badan terlihat relatif rendah dibandingkan tinggi badan berdasarkan BMI. Ini belum cukup untuk menyimpulkan kekurangan asupan.";
+
+            addListItem(
+                nutritionList,
+                "Pastikan makan utama tetap teratur."
+            );
+
+            addListItem(
+                nutritionList,
+                "Utamakan protein seperti telur, ikan, ayam, tempe, dan tahu."
+            );
+
+            addListItem(
+                nutritionList,
+                "Tambahkan sayur, buah, dan sumber karbohidrat yang cukup."
+            );
+
+        } else if (bmi < 25) {
+
+            nutritionAnalysis.textContent =
+                "Perbandingan berat dan tinggi terlihat relatif seimbang berdasarkan BMI, tetapi pola makan tetap perlu dijaga.";
+
+            addListItem(
+                nutritionList,
+                "Pertahankan makan teratur dan beragam."
+            );
+
+            addListItem(
+                nutritionList,
+                "Cukupi protein, sayur, buah, dan cairan."
+            );
+
+            addListItem(
+                nutritionList,
+                "Tidak perlu melakukan diet ketat hanya karena angka BMI."
+            );
+
+        } else {
+
+            nutritionAnalysis.textContent =
+                "Berat badan terlihat relatif tinggi dibandingkan tinggi badan berdasarkan BMI. Pada usia remaja, hasil ini perlu dilihat bersama pertumbuhan.";
+
+            addListItem(
+                nutritionList,
+                "Tetap makan teratur dan jangan melewatkan makan."
+            );
+
+            addListItem(
+                nutritionList,
+                "Batasi minuman manis dan makanan ultra-proses secara bertahap."
+            );
+
+            addListItem(
+                nutritionList,
+                "Perbanyak makanan beragam seperti protein, sayur, buah, dan sumber karbohidrat."
+            );
+        }
+
+
+        /*
+           Aktivitas.
+        */
+
+        if (activity === "sedentary") {
+
+            activityStatus.textContent =
+                "Aktivitas masih rendah";
+
+            activityAnalysis.textContent =
+                "Kamu cukup jarang bergerak. Aktivitas dapat ditambah secara perlahan tanpa harus langsung melakukan olahraga berat.";
+
+        } else if (activity === "light") {
+
+            activityStatus.textContent =
+                "Aktivitas ringan";
+
+            activityAnalysis.textContent =
+                "Kamu sudah memiliki aktivitas ringan. Selanjutnya bisa mempertahankan rutinitas dan menambah durasi secara bertahap.";
+
+        } else if (activity === "moderate") {
+
+            activityStatus.textContent =
+                "Cukup aktif";
+
+            activityAnalysis.textContent =
+                "Aktivitasmu sudah cukup baik. Fokus pada konsistensi dan keseimbangan antara olahraga, makan, dan istirahat.";
+
+        } else {
+
+            activityStatus.textContent =
+                "Aktif";
+
+            activityAnalysis.textContent =
+                "Aktivitasmu cukup tinggi. Pastikan makan, cairan, dan waktu istirahat tetap mencukupi.";
+        }
+
+
+        /*
+           Olahraga.
+        */
+
+        exerciseAnalysis.textContent =
+            "Pilih aktivitas yang kamu sukai agar lebih mudah dilakukan secara konsisten.";
+
+        addListItem(
+            exerciseList,
+            "Jalan cepat atau jogging ringan."
+        );
+
+        addListItem(
+            exerciseList,
+            "Badminton, bersepeda, atau olahraga permainan."
+        );
+
+        addListItem(
+            exerciseList,
+            "Latihan kekuatan ringan dengan teknik yang benar."
+        );
+
+        addListItem(
+            exerciseList,
+            "Mulai secara bertahap dan berikan waktu istirahat."
+        );
+
+
+        /*
+           Yang harus dilakukan.
+        */
+
+        actionAnalysis.textContent =
+            "Fokus utama bukan mengejar angka berat badan tertentu, tetapi membangun kebiasaan sehat.";
+
+        addListItem(
+            actionList,
+            "Makan secara teratur dan beragam."
+        );
+
+        addListItem(
+            actionList,
+            "Aktif bergerak secara rutin."
+        );
+
+        addListItem(
+            actionList,
+            "Tidur cukup dan menjaga jadwal tidur."
+        );
+
+        addListItem(
+            actionList,
+            "Jika khawatir dengan pertumbuhan atau berat badan, konsultasikan dengan tenaga kesehatan."
+        );
+
+        return;
+    }
+
+
+    /*
+       =========================
+       USIA 18+
+       =========================
+    */
+
+    let category;
+
+    if (bmi < 18.5) {
+
+        category = "Di bawah rentang BMI umum";
+
+        document.getElementById("bmiText").textContent =
+            "BMI berada di bawah 18,5.";
+
+        weightAnalysis.textContent =
+            "Berat badan berada di bawah rentang BMI umum untuk orang dewasa. Ini belum otomatis berarti kekurangan gizi.";
+
+        nutritionAnalysis.textContent =
+            "Perhatikan kecukupan makan dan kualitas makanan.";
+
+        addListItem(
+            nutritionList,
+            "Makan secara teratur."
+        );
+
+        addListItem(
+            nutritionList,
+            "Utamakan protein seperti telur, ikan, ayam, tempe, dan tahu."
+        );
+
+        addListItem(
+            nutritionList,
+            "Tambahkan sumber energi bergizi seperti nasi, kentang, oats, kacang-kacangan, dan susu bila cocok."
+        );
+
+    } else if (bmi < 25) {
+
+        category = "Dalam rentang BMI umum";
+
+        document.getElementById("bmiText").textContent =
+            "BMI berada dalam rentang 18,5–24,9.";
+
+        weightAnalysis.textContent =
+            "Berat badan berada dalam rentang BMI yang umum digunakan untuk orang dewasa.";
+
+        nutritionAnalysis.textContent =
+            "Fokus mempertahankan pola makan yang beragam dan seimbang.";
+
+        addListItem(
+            nutritionList,
+            "Pertahankan makan teratur."
+        );
+
+        addListItem(
+            nutritionList,
+            "Cukupi protein, sayur, buah, dan sumber karbohidrat."
+        );
+
+        addListItem(
+            nutritionList,
+            "Batasi minuman manis dan makanan ultra-proses secara wajar."
+        );
+
+    } else if (bmi < 30) {
+
+        category = "Di atas rentang BMI umum";
+
+        document.getElementById("bmiText").textContent =
+            "BMI berada di atas 25.";
+
+        weightAnalysis.textContent =
+            "Berat badan berada di atas rentang BMI yang umum digunakan untuk orang dewasa. BMI tidak dapat menentukan komposisi tubuh secara pasti.";
+
+        nutritionAnalysis.textContent =
+            "Fokus pada kualitas makanan dan kebiasaan yang dapat dipertahankan.";
+
+        addListItem(
+            nutritionList,
+            "Tetap makan teratur dan hindari diet ekstrem."
+        );
+
+        addListItem(
+            nutritionList,
+            "Perbanyak sayur, buah, dan sumber protein."
+        );
+
+        addListItem(
+            nutritionList,
+            "Kurangi minuman manis dan makanan ultra-proses secara bertahap."
+        );
+
+    } else {
+
+        category = "BMI tinggi";
+
+        document.getElementById("bmiText").textContent =
+            "BMI berada pada 30 atau lebih.";
+
+        weightAnalysis.textContent =
+            "BMI berada pada tingkat tinggi menurut kategori BMI dewasa. BMI bukan diagnosis dan sebaiknya dinilai bersama faktor kesehatan lainnya.";
+
+        nutritionAnalysis.textContent =
+            "Fokus pada pola makan seimbang dan perubahan kebiasaan secara bertahap.";
+
+        addListItem(
+            nutritionList,
+            "Hindari diet ekstrem atau melewatkan makan."
+        );
+
+        addListItem(
+            nutritionList,
+            "Utamakan makanan dengan protein, sayur, buah, dan sumber karbohidrat."
+        );
+
+        addListItem(
+            nutritionList,
+            "Kurangi minuman tinggi gula dan makanan ultra-proses secara bertahap."
+        );
+    }
+
+
+    weightStatus.textContent = category;
+
+
+    /*
+       Aktivitas.
+    */
+
+    if (activity === "sedentary") {
+
+        activityStatus.textContent =
+            "Aktivitas rendah";
+
+        activityAnalysis.textContent =
+            "Aktivitas harianmu masih rendah. Menambah gerakan secara bertahap dapat membantu kebugaran.";
+
+    } else if (activity === "light") {
+
+        activityStatus.textContent =
+            "Aktivitas ringan";
+
+        activityAnalysis.textContent =
+            "Kamu sudah bergerak, tetapi masih dapat menambah aktivitas secara perlahan.";
+
+    } else if (activity === "moderate") {
+
+        activityStatus.textContent =
+            "Cukup aktif";
+
+        activityAnalysis.textContent =
+            "Aktivitasmu cukup baik. Pertahankan konsistensi dan beri waktu tubuh untuk pulih.";
+
+    } else if (activity === "active") {
+
+        activityStatus.textContent =
+            "Aktif";
+
+        activityAnalysis.textContent =
+            "Aktivitasmu cukup tinggi. Pastikan asupan makanan, cairan, dan istirahat sesuai kebutuhan.";
+
+    } else {
+
+        activityStatus.textContent =
+            "Sangat aktif";
+
+        activityAnalysis.textContent =
+            "Aktivitasmu sangat tinggi. Perhatikan pemulihan, cairan, dan kecukupan makanan.";
+    }
+
+
+    /*
+       Olahraga.
+    */
+
+    exerciseAnalysis.textContent =
+        "Pilih olahraga sesuai kemampuan dan tingkat aktivitasmu.";
+
+    if (activity === "sedentary") {
+
+        addListItem(
+            exerciseList,
+            "Mulai dengan jalan kaki 15–30 menit."
+        );
+
+        addListItem(
+            exerciseList,
+            "Stretching dan latihan kekuatan ringan."
+        );
+
+        addListItem(
+            exerciseList,
+            "Naikkan durasi secara perlahan."
+        );
+
+    } else if (activity === "light") {
+
+        addListItem(
+            exerciseList,
+            "Jalan cepat atau jogging ringan."
+        );
+
+        addListItem(
+            exerciseList,
+            "Badminton, bersepeda, atau olahraga permainan."
+        );
+
+        addListItem(
+            exerciseList,
+            "Latihan kekuatan 2–3 kali seminggu secara bertahap."
+        );
+
+    } else {
+
+        addListItem(
+            exerciseList,
+            "Pertahankan kombinasi latihan kardio dan kekuatan."
+        );
+
+        addListItem(
+            exerciseList,
+            "Berikan waktu istirahat yang cukup."
+        );
+
+        addListItem(
+            exerciseList,
+            "Sesuaikan intensitas dengan kemampuan dan kondisi tubuh."
+        );
+    }
+
+
+    /*
+       Yang dilakukan.
+    */
+
+    actionAnalysis.textContent =
+        "Berdasarkan data yang kamu masukkan, fokus terbaik adalah memperbaiki kebiasaan secara bertahap.";
+
+    addListItem(
+        actionList,
+        "Pertahankan jadwal makan yang teratur."
+    );
+
+    addListItem(
+        actionList,
+        "Pilih makanan yang beragam dan cukup bergizi."
+    );
+
+    addListItem(
+        actionList,
+        "Lakukan aktivitas fisik secara rutin."
+    );
+
+    addListItem(
+        actionList,
+        "Tidur cukup dan berikan waktu pemulihan setelah olahraga."
+    );
+
+    healthNote.textContent =
+        "ℹ️ Hasil ini adalah perkiraan dari data yang dimasukkan. BMI dan body fat tidak dapat menggambarkan seluruh kondisi kesehatan seseorang.";
+}
+
+
+/* =========================
+   TAMBAH LIST
+========================= */
+
+function addListItem(list, text) {
+
+    const li = document.createElement("li");
+
+    li.textContent = text;
+
+    list.appendChild(li);
+}
+
+
+/* =========================
+   CHAT AI
+========================= */
+
+function addMessage(text, type) {
+
+    const chatBox =
+        document.getElementById("chatBox");
+
+    const message =
+        document.createElement("div");
+
+    message.className =
+        "message " + type;
+
+    message.textContent = text;
+
+    chatBox.appendChild(message);
+
+    chatBox.scrollTop =
+        chatBox.scrollHeight;
+}
+
+
+function askQuick(text) {
+
+    document.getElementById("chatInput").value = text;
+
+    sendMessage();
+}
+
+
+async function sendMessage() {
+
+    const input =
+        document.getElementById("chatInput");
+
+    const typingText =
+        document.getElementById("typingText");
+
+    const message =
+        input.value.trim();
+
+    if (!message) {
+        return;
+    }
+
+    addMessage(message, "user");
+
+    input.value = "";
+
+    chatHistory.push({
+        role: "user",
+        content: message
+    });
+
+    typingText.textContent =
+        "NutriCheck AI sedang menyiapkan jawaban...";
+
+    try {
+
+        const response =
+            await fetch("/api/chat", {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    message,
+                    healthData,
+                    history: chatHistory.slice(-4)
+                })
+            });
+
+
+        const data =
+            await response.json();
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.error || "Terjadi kesalahan."
+            );
+        }
+
+
+        let reply =
+            data.reply ||
+            "Maaf, belum ada jawaban.";
+
+
+        reply = reply
+            .replace(/\*\*/g, "")
+            .replace(/\*/g, "")
+            .trim();
+
+
+        addMessage(reply, "ai");
+
+
+        chatHistory.push({
+            role: "assistant",
+            content: reply
+        });
+
+
+    } catch (error) {
+
+        addMessage(
+            "Maaf, NutriCheck AI sedang mengalami kendala. 🔄 Coba kirim pertanyaan lagi.",
+            "ai"
+        );
+
+        console.error(error);
+    }
+
+
+    typingText.textContent = "";
+}
+
+
+/* =========================
+   ENTER UNTUK CHAT
+========================= */
+
+document
+    .getElementById("chatInput")
+    .addEventListener("keydown", function(event) {
+
+        if (event.key === "Enter") {
+
+            event.preventDefault();
+
+            sendMessage();
+        }
+
+    });
+
+</script>
+
+</body>
+</html>
